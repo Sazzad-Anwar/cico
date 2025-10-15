@@ -16,6 +16,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        title: '#0E3400',
+        button: '#329600',
         primary: {
           0: 'rgb(var(--color-primary-0)/<alpha-value>)',
           50: 'rgb(var(--color-primary-50)/<alpha-value>)',
@@ -172,14 +174,13 @@ module.exports = {
         },
       },
       fontFamily: {
-        heading: undefined,
-        body: undefined,
-        mono: undefined,
-        jakarta: ['var(--font-plus-jakarta-sans)'],
-        roboto: ['var(--font-roboto)'],
-        code: ['var(--font-source-code-pro)'],
-        inter: ['var(--font-inter)'],
-        'space-mono': ['var(--font-space-mono)'],
+        anton: ['Anton', 'sans-serif'],
+        dmSans: ['DM Sans', 'sans-serif'],
+        // jakarta: ['var(--font-plus-jakarta-sans)'],
+        // roboto: ['var(--font-roboto)'],
+        // code: ['var(--font-source-code-pro)'],
+        // inter: ['var(--font-inter)'],
+        // 'space-mono': ['var(--font-space-mono)'],
       },
       fontWeight: {
         extrablack: '950',
@@ -200,4 +201,4 @@ module.exports = {
       },
     },
   },
-};
+}

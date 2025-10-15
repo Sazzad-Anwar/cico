@@ -1,27 +1,33 @@
 {
   "expo": {
-    "name": "starter-kit-expo",
-    "slug": "starter-kit-expo",
+    "name": "cico",
+    "slug": "cico",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "starterkitexpo",
+    "icon": "./assets/images/adaptive-icon.png",
+    "scheme": "cico",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/images/splash-icon.png",
+      "image": "./assets/images/logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
     "android": {
+      "edgeToEdgeEnabled": true,
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.sazzadanwar.cico"
     },
     "web": {
       "bundler": "metro",
@@ -30,8 +36,22 @@
     },
     "plugins": [
       "expo-router",
-      "expo-web-browser",
-      "expo-font"
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#F2FFE4",
+          "image": "./assets/images/logo.png",
+          "imageWidth": 200
+        }
+      ],
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera",
+          "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone",
+          "recordAudioAndroid": true
+        }
+      ]
     ],
     "experiments": {
       "typedRoutes": true

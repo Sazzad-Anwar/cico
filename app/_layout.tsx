@@ -1,55 +1,96 @@
-import { GluestackUIProvider } from '@/components/ui/gluestack-ui-provider';
-import '@/global.css';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { GluestackUIProvider } from '@/components/ui/gluestack-ui-provider'
+import '@/global.css'
+import FontAwesome from '@expo/vector-icons/FontAwesome'
 import {
   DarkTheme,
   DefaultTheme,
   ThemeProvider,
-} from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import * as SplashScreen from 'expo-splash-screen';
-import { useEffect, useState } from 'react';
-import { useColorScheme } from '@/components/useColorScheme';
-import { Slot, usePathname } from 'expo-router';
-import { StatusBar } from 'expo-status-bar';
-import { Fab, FabIcon } from '@/components/ui/fab';
-import { MoonIcon, SunIcon } from '@/components/ui/icon';
+} from '@react-navigation/native'
+import { useFonts } from 'expo-font'
+import * as SplashScreen from 'expo-splash-screen'
+import { useEffect, useState } from 'react'
+import { useColorScheme } from '@/components/useColorScheme'
+import { Slot, Stack, usePathname } from 'expo-router'
+import { StatusBar } from 'expo-status-bar'
+import { Fab, FabIcon } from '@/components/ui/fab'
+import { KeyboardProvider } from 'react-native-keyboard-controller'
+import useAuthStore from '../store/auth.store'
 
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
-} from 'expo-router';
+} from 'expo-router'
 
-SplashScreen.preventAutoHideAsync();
+SplashScreen.preventAutoHideAsync()
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+    Anton: require('../assets/fonts/Anton-Regular.ttf'),
     ...FontAwesome.font,
-  });
+  })
 
-  const [styleLoaded, setStyleLoaded] = useState(false);
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
   useEffect(() => {
-    if (error) throw error;
-  }, [error]);
+    if (error) throw error
+  }, [error])
 
   useEffect(() => {
     if (loaded) {
-      SplashScreen.hideAsync();
+      SplashScreen.hideAsync()
     }
-  }, [loaded]);
-  return <RootLayoutNav />;
+  }, [loaded])
+  return <RootLayoutNav />
 }
 
 function RootLayoutNav() {
-  const pathname = usePathname();
-  const [colorMode, setColorMode] = useState<'light' | 'dark'>('light');
+  const [colorMode, setColorMode] = useState<'light' | 'dark'>('light')
+  const { isAuthenticated, isLoading } = useAuthStore()
 
   return (
     <GluestackUIProvider mode={colorMode}>
       <ThemeProvider value={colorMode === 'dark' ? DarkTheme : DefaultTheme}>
-        <Slot />
+        <KeyboardProvider>
+          <Stack
+            screenOptions={{
+              animation: 'slide_from_right',
+            }}
+          >
+            <Stack.Protected guard={!isAuthenticated}>
+              <Stack.Screen
+                name="index"
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="slider-screen"
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="login"
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="signup"
+                options={{ headerShown: false }}
+              />
+            </Stack.Protected>
+
+            <Stack.Protected guard={isAuthenticated || isLoading}>
+              <Stack.Screen
+                name="(tabs)"
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="user-details-edit"
+                options={{ headerShown: false }}
+              />
+              <Stack.Screen
+                name="(show-data)"
+                options={{ headerShown: false }}
+              />
+            </Stack.Protected>
+          </Stack>
+        </KeyboardProvider>
+        {/* <Slot />
         {pathname === '/' && (
           <Fab
             onPress={() =>
@@ -60,8 +101,8 @@ function RootLayoutNav() {
           >
             <FabIcon as={colorMode === 'dark' ? MoonIcon : SunIcon} />
           </Fab>
-        )}
+        )} */}
       </ThemeProvider>
     </GluestackUIProvider>
-  );
+  )
 }
