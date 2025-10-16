@@ -23,6 +23,7 @@ interface DataStore {
   users: User[]
   transfers: Transfer[]
   transfer: Transfer | null
+  loadData: () => Promise<void>
   deleteUser: (userId: string) => void
   setSelectedUser: (user: User | null) => void
   addUser: (user: User) => void
@@ -67,6 +68,25 @@ const useDataStore = create<DataStore>((set, get) => ({
   isLoading: false,
   error: null,
   transfers: initialTransfers,
+  loadData: async () => {
+    try {
+      set((state) => ({ ...state, isLoading: true, error: null }))
+      const data = await loadUsers()
+      set((state) => ({
+        ...state,
+        isLoading: false,
+        users: data.users,
+        transfers: data.transfers,
+      }))
+    } catch (error) {
+      console.log(error)
+      set((state) => ({
+        ...state,
+        isLoading: false,
+        error: error instanceof Error ? error.message : 'Load data failed',
+      }))
+    }
+  },
   setSelectedUser: (user) => set(() => ({ selectedUser: user })),
   deleteUser: async (userId) => {
     try {
@@ -211,9 +231,9 @@ const useDataStore = create<DataStore>((set, get) => ({
   },
 }))
 
-// Initialize users after store creation
-loadUsers().then((data) => {
-  useDataStore.setState({ users: data.users, transfers: data.transfers })
-})
+// // Initialize users after store creation
+// loadUsers().then((data) => {
+//   useDataStore.setState({ users: data.users, transfers: data.transfers })
+// })
 
 export default useDataStore

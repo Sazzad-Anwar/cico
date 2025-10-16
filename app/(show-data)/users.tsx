@@ -5,17 +5,23 @@ import { FlatList, TouchableOpacity } from 'react-native'
 import { Trash } from 'lucide-react-native'
 import { useRouter } from 'expo-router'
 import Loader from '../../components/loader'
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { LinearTransition } from 'react-native-reanimated'
 
 export default function Users() {
-  const { users, isLoading } = useDataStore()
+  const { users, isLoading, loadData } = useDataStore()
+
+  useEffect(() => {
+    if (users.length === 0) {
+      loadData()
+    }
+  }, [])
 
   if (isLoading) {
     return (
       <Loader
         isFullScreen
-        loaderText="Fetching data..."
+        loaderText="Loading data..."
         className="h-full"
       />
     )
@@ -23,6 +29,7 @@ export default function Users() {
 
   return (
     <View style={{ flex: 1 }}>
+      {/* <Text>Hello</Text> */}
       <AnimatePresence>
         <FlatList
           className="mt-2"

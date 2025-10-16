@@ -1,21 +1,18 @@
+import { useRouter } from 'expo-router'
+import { CornerUpRight, Grip, Plus, ReceiptText, X } from 'lucide-react-native'
 import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogOverlay,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from '@/components/ui/alert-dialog';
-import { useRouter } from 'expo-router';
-import { CornerUpRight, Grip, Plus, ReceiptText, X } from 'lucide-react-native';
+  Actionsheet,
+  ActionsheetContent,
+  ActionsheetItem,
+  ActionsheetItemText,
+  ActionsheetDragIndicator,
+  ActionsheetDragIndicatorWrapper,
+  ActionsheetBackdrop,
+} from '@/components/ui/actionsheet'
 
-import { Image, ScrollView, Text, View } from 'moti';
-import { useState } from 'react';
-import { TouchableOpacity } from 'react-native';
+import { Image, ScrollView, Text, View } from 'moti'
+import { useState } from 'react'
+import { TouchableOpacity } from 'react-native'
 
 const options = [
   {
@@ -33,7 +30,7 @@ const options = [
     icon: ReceiptText,
     href: '/paybills',
   },
-];
+]
 
 const moreOptions = [
   {
@@ -81,58 +78,82 @@ const moreOptions = [
     image: require('../assets/images/wallet-to-bank-icon.png'),
     href: '/wallet-to-bank',
   },
-];
+]
 
 export default function ActionButtons() {
-  const { navigate } = useRouter();
-  const [isMoreOptionOpen, setIsMoreOptionOpen] = useState(false);
+  const { navigate } = useRouter()
+  const [isMoreOptionOpen, setIsMoreOptionOpen] = useState(false)
   return (
-    <View className="flex flex-row items-center justify-between gap-2 px-3">
+    <View className="flex flex-row items-center justify-between gap-2 mt-4 px-3">
       {options.map((option) => (
         <TouchableOpacity
           onPress={() => navigate(option.href as any)}
           key={option.name}
-          className="flex h-[72px] w-[72px] flex-col items-center justify-center gap-2 rounded-xl bg-white">
-          <option.icon size={24} color="#329600" />
-          <Text className="text-xs font-medium text-[#3D3D3D]">{option.name}</Text>
+          className="flex h-[72px] w-[72px] flex-col items-center justify-center gap-2 rounded-xl bg-white"
+        >
+          <option.icon
+            size={24}
+            color="#329600"
+          />
+          <Text className="text-xs font-medium text-[#3D3D3D]">
+            {option.name}
+          </Text>
         </TouchableOpacity>
       ))}
 
-      <AlertDialog open={isMoreOptionOpen} onOpenChange={setIsMoreOptionOpen}>
-        <AlertDialogTrigger asChild>
-          <TouchableOpacity className="flex h-[72px] w-[72px] flex-col items-center justify-center gap-2 rounded-xl bg-white">
-            <Grip size={24} color="#329600" />
-            <Text className="text-xs font-medium text-[#3D3D3D]">More</Text>
-          </TouchableOpacity>
-        </AlertDialogTrigger>
-        <AlertDialogContent
-          overlayClassName="justify-end bottom-0 pb-5 px-0 py-0"
-          className="rounded-3xl px-0 py-0">
-          <AlertDialogHeader className="mt-0 flex flex-row items-center justify-between border-b border-[#E7E7E7] px-5 py-4">
-            <AlertDialogTitle>More Options</AlertDialogTitle>
-            <AlertDialogCancel className="h-5 border-0 p-0 shadow-none">
-              <X size={20} />
-            </AlertDialogCancel>
-          </AlertDialogHeader>
-
-          <View className="flex flex-row flex-wrap items-center justify-between gap-2 px-5 pb-3">
+      <TouchableOpacity
+        onPress={() => setIsMoreOptionOpen(true)}
+        className="flex h-[72px] w-[72px] flex-col items-center justify-center gap-2 rounded-xl bg-white"
+      >
+        <Grip
+          size={24}
+          color="#329600"
+        />
+        <Text className="text-xs font-medium text-[#3D3D3D]">More</Text>
+      </TouchableOpacity>
+      <Actionsheet
+        isOpen={isMoreOptionOpen}
+        onClose={() => setIsMoreOptionOpen(false)}
+      >
+        <ActionsheetBackdrop />
+        <ActionsheetContent className="p-0">
+          <ActionsheetDragIndicatorWrapper>
+            <ActionsheetDragIndicator />
+          </ActionsheetDragIndicatorWrapper>
+          <View className="p-4 border-b border-[#E7E7E7] w-full flex flex-row justify-between items-center">
+            <Text className="text-lg font-semibold text-[#3D3D3D]">
+              More Options
+            </Text>
+            <TouchableOpacity onPress={() => setIsMoreOptionOpen(false)}>
+              <X
+                size={24}
+                color="#3D3D3D"
+              />
+            </TouchableOpacity>
+          </View>
+          <View className="flex mx-auto flex-row flex-wrap items-center justify-between gap-4 px-5 py-3">
             {moreOptions.map((option) => (
               <TouchableOpacity
                 key={option.image}
                 onPress={() => {
-                  setIsMoreOptionOpen(false);
-                  navigate(option.href as any);
+                  setIsMoreOptionOpen(false)
+                  navigate(option.href as any)
                 }}
-                className="flex h-16 w-16 flex-col items-center justify-center gap-3">
-                <Image source={option.image} className="h-auto w-auto" />
+                className="flex h-20 w-20 flex-col items-center justify-center gap-3"
+              >
+                <Image
+                  source={option.image}
+                  className="h-auto w-auto"
+                />
                 <Text className="text-center font-dmSans text-[10px] font-light leading-none">
                   {option.name}
                 </Text>
               </TouchableOpacity>
             ))}
+            {/* <View className="flex h-16 w-16 flex-col items-center justify-center gap-3" /> */}
           </View>
-        </AlertDialogContent>
-      </AlertDialog>
+        </ActionsheetContent>
+      </Actionsheet>
     </View>
-  );
+  )
 }

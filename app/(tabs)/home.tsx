@@ -42,7 +42,7 @@ export default function HoomeScreen() {
           <WalletCard />
 
           {/* Action buttons */}
-          {/* <ActionButtons /> */}
+          <ActionButtons />
 
           {/* Quick transfers */}
           {/* <Transfers /> */}

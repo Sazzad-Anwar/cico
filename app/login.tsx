@@ -47,19 +47,32 @@ export default function LoginScreen() {
   const [showPassword, setShowPassword] = useState(false)
   const form = useForm<z.infer<typeof LoginSchema>>({
     resolver: zodResolver(LoginSchema),
-    defaultValues: async () => {
-      const credentials = await AsyncStorage.getItem('credentials')
-      if (credentials) {
-        const { email, password, isRemembered } = JSON.parse(credentials)
-        return { email, password, isRemembered }
-      }
-      return { email: '', password: '', isRemembered: false }
+    defaultValues: {
+      email: '',
+      password: '',
+      isRemembered: false,
     },
   })
   const { top } = useSafeAreaInsets()
   const { push } = useRouter()
   const { isLoading, login, isAuthenticated, error, clearError } =
     useAuthStore()
+
+  // Load saved credentials when component mounts
+  useEffect(() => {
+    const loadCredentials = async () => {
+      try {
+        const credentials = await AsyncStorage.getItem('credentials')
+        if (credentials) {
+          const { email, password, isRemembered } = JSON.parse(credentials)
+          form.reset({ email, password, isRemembered })
+        }
+      } catch (error) {
+        console.error('Error loading credentials:', error)
+      }
+    }
+    loadCredentials()
+  }, [])
 
   const handleSubmit = async (data: z.infer<typeof LoginSchema>) => {
     try {
@@ -144,7 +157,7 @@ export default function LoginScreen() {
                 <InputField
                   placeholder="Enter your email"
                   ref={ref}
-                  value={value}
+                  value={value || ''}
                   onChangeText={onChange}
                   onBlur={onBlur}
                   autoCapitalize="none"
@@ -174,8 +187,7 @@ export default function LoginScreen() {
                     ref={ref}
                     secureTextEntry={!showPassword}
                     placeholder="Enter your password"
-                    className=""
-                    value={value}
+                    value={value || ''}
                     onChangeText={onChange}
                     onBlur={onBlur}
                   />
@@ -211,8 +223,8 @@ export default function LoginScreen() {
               <View className="flex flex-row items-center gap-3">
                 <Checkbox
                   onChange={(data) => onChange(Boolean(data))}
-                  value={value?.toString()}
-                  isChecked={value}
+                  value={value?.toString() || 'false'}
+                  isChecked={value || false}
                   ref={ref}
                   onBlur={onBlur}
                 >

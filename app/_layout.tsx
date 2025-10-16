@@ -13,6 +13,7 @@ import { Stack } from 'expo-router'
 import { KeyboardProvider } from 'react-native-keyboard-controller'
 import useAuthStore from '../store/auth.store'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -45,51 +46,54 @@ function RootLayoutNav() {
   const { isAuthenticated, isLoading } = useAuthStore()
 
   return (
-    <GestureHandlerRootView style={{ flex: 1 }}>
-      <GluestackUIProvider mode={colorMode}>
-        <ThemeProvider value={colorMode === 'dark' ? DarkTheme : DefaultTheme}>
-          <KeyboardProvider>
-            <Stack
-              screenOptions={{
-                animation: 'slide_from_right',
-              }}
-            >
-              <Stack.Protected guard={!isAuthenticated}>
-                <Stack.Screen
-                  name="index"
-                  options={{ headerShown: false }}
-                />
-                <Stack.Screen
-                  name="slider-screen"
-                  options={{ headerShown: false }}
-                />
-                <Stack.Screen
-                  name="login"
-                  options={{ headerShown: false }}
-                />
-                <Stack.Screen
-                  name="signup"
-                  options={{ headerShown: false }}
-                />
-              </Stack.Protected>
+    <SafeAreaProvider>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <GluestackUIProvider mode={colorMode}>
+          <ThemeProvider
+            value={colorMode === 'dark' ? DarkTheme : DefaultTheme}
+          >
+            <KeyboardProvider>
+              <Stack
+                screenOptions={{
+                  animation: 'slide_from_right',
+                }}
+              >
+                <Stack.Protected guard={!isAuthenticated}>
+                  <Stack.Screen
+                    name="index"
+                    options={{ headerShown: false }}
+                  />
+                  <Stack.Screen
+                    name="slider-screen"
+                    options={{ headerShown: false }}
+                  />
+                  <Stack.Screen
+                    name="login"
+                    options={{ headerShown: false }}
+                  />
+                  <Stack.Screen
+                    name="signup"
+                    options={{ headerShown: false }}
+                  />
+                </Stack.Protected>
 
-              <Stack.Protected guard={isAuthenticated || isLoading}>
-                <Stack.Screen
-                  name="(tabs)"
-                  options={{ headerShown: false }}
-                />
-                <Stack.Screen
-                  name="user-details-edit"
-                  options={{ headerShown: false }}
-                />
-                <Stack.Screen
-                  name="(show-data)"
-                  options={{ headerShown: false }}
-                />
-              </Stack.Protected>
-            </Stack>
-          </KeyboardProvider>
-          {/* <Slot />
+                <Stack.Protected guard={isAuthenticated || isLoading}>
+                  <Stack.Screen
+                    name="(tabs)"
+                    options={{ headerShown: false }}
+                  />
+                  <Stack.Screen
+                    name="user-details-edit"
+                    options={{ headerShown: false }}
+                  />
+                  <Stack.Screen
+                    name="(show-data)"
+                    options={{ headerShown: false }}
+                  />
+                </Stack.Protected>
+              </Stack>
+            </KeyboardProvider>
+            {/* <Slot />
         {pathname === '/' && (
           <Fab
             onPress={() =>
@@ -101,8 +105,9 @@ function RootLayoutNav() {
             <FabIcon as={colorMode === 'dark' ? MoonIcon : SunIcon} />
           </Fab>
         )} */}
-        </ThemeProvider>
-      </GluestackUIProvider>
-    </GestureHandlerRootView>
+          </ThemeProvider>
+        </GluestackUIProvider>
+      </GestureHandlerRootView>
+    </SafeAreaProvider>
   )
 }

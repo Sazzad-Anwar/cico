@@ -14,14 +14,20 @@ import Animated, {
 import { Gesture, GestureDetector } from 'react-native-gesture-handler'
 import { scheduleOnRN, scheduleOnUI, runOnJS } from 'react-native-worklets'
 import { Trash } from 'lucide-react-native'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 type TransferType = Transfer & {
   user: User
 }
 
 export default function TransactionsScreen() {
-  const { transfers, isLoading } = useDataStore()
+  const { transfers, isLoading, loadData } = useDataStore()
+
+  useEffect(() => {
+    if (transfers.length === 0) {
+      loadData()
+    }
+  }, [])
 
   if (isLoading) {
     return (
@@ -88,7 +94,7 @@ function TransferCard({ item, index }: { item: TransferType; index: number }) {
   return (
     <View className="relative">
       {isAnimateEnded && (
-        <View className="absolute left-0 right-0 top-0 bottom-0 justify-start pl-5 bg-red-100 flex flex-row items-center my-1  p-3 rounded-2xl border border-red-300">
+        <View className="absolute left-0 right-0 top-0 bottom-0 justify-start pl-5 bg-red-100 flex flex-row items-center my-1  p-3 rounded-2xl border border-red-100">
           <View className="bg-red-500 px-2 py-2 rounded-full">
             <Trash
               color="white"
