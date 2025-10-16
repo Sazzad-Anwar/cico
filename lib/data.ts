@@ -18,7 +18,7 @@ export const initialUsers: User[] = [
     dateOfBirth: '1990-05-15',
     nid: 'NID1234567890',
     kebeleId: 'KEB001',
-    avatar: 'https://picsum.photos/200',
+    avatar: `https://picsum.photos/200?random=${Math.random()}`,
     deposit: [
       { type: 'ETB', amount: 2500 },
       { type: 'USD', amount: 1500 },
@@ -33,7 +33,7 @@ export const initialUsers: User[] = [
     dateOfBirth: '1988-09-22',
     nid: 'NID2345678901',
     kebeleId: 'KEB002',
-    avatar: 'https://picsum.photos/200',
+    avatar: `https://picsum.photos/200?random=${Math.random()}`,
     deposit: [
       { type: 'ETB', amount: 3000 },
       { type: 'USD', amount: 2000 },
@@ -48,7 +48,7 @@ export const initialUsers: User[] = [
     dateOfBirth: '1992-12-08',
     nid: 'NID3456789012',
     kebeleId: 'KEB003',
-    avatar: 'https://picsum.photos/200',
+    avatar: `https://picsum.photos/200?random=${Math.random()}`,
     deposit: [
       { type: 'ETB', amount: 4000 },
       { type: 'USD', amount: 2500 },
@@ -63,7 +63,7 @@ export const initialUsers: User[] = [
     dateOfBirth: '1985-03-30',
     nid: 'NID4567890123',
     kebeleId: 'KEB004',
-    avatar: 'https://picsum.photos/200',
+    avatar: `https://picsum.photos/200?random=${Math.random()}`,
     deposit: [
       { type: 'ETB', amount: 5000 },
       { type: 'USD', amount: 3000 },
@@ -78,7 +78,7 @@ export const initialUsers: User[] = [
     dateOfBirth: '1993-07-14',
     nid: 'NID5678901234',
     kebeleId: 'KEB005',
-    avatar: 'https://picsum.photos/200',
+    avatar: `https://picsum.photos/200?random=${Math.random()}`,
     deposit: [
       { type: 'ETB', amount: 3500 },
       { type: 'USD', amount: 1800 },
@@ -93,7 +93,7 @@ export const initialUsers: User[] = [
     dateOfBirth: '1987-11-25',
     nid: 'NID6789012345',
     kebeleId: 'KEB006',
-    avatar: 'https://picsum.photos/200',
+    avatar: `https://picsum.photos/200?random=${Math.random()}`,
     deposit: [
       { type: 'ETB', amount: 4500 },
       { type: 'USD', amount: 2200 },
@@ -108,7 +108,7 @@ export const initialUsers: User[] = [
     dateOfBirth: '1991-04-03',
     nid: 'NID7890123456',
     kebeleId: 'KEB007',
-    avatar: 'https://picsum.photos/200',
+    avatar: `https://picsum.photos/200?random=${Math.random()}`,
     deposit: [
       { type: 'ETB', amount: 2800 },
       { type: 'USD', amount: 1600 },
@@ -123,7 +123,7 @@ export const initialUsers: User[] = [
     dateOfBirth: '1989-01-18',
     nid: 'NID8901234567',
     kebeleId: 'KEB008',
-    avatar: 'https://picsum.photos/200',
+    avatar: `https://picsum.photos/200?random=${Math.random()}`,
     deposit: [
       { type: 'ETB', amount: 3200 },
       { type: 'USD', amount: 1900 },
@@ -138,7 +138,7 @@ export const initialUsers: User[] = [
     dateOfBirth: '1994-06-12',
     nid: 'NID9012345678',
     kebeleId: 'KEB009',
-    avatar: 'https://picsum.photos/200',
+    avatar: `https://picsum.photos/200?random=${Math.random()}`,
     deposit: [
       { type: 'ETB', amount: 2700 },
       { type: 'USD', amount: 1700 },
@@ -153,7 +153,7 @@ export const initialUsers: User[] = [
     dateOfBirth: '1986-08-29',
     nid: 'NID0123456789',
     kebeleId: 'KEB010',
-    avatar: 'https://picsum.photos/200',
+    avatar: `https://picsum.photos/200?random=${Math.random()}`,
     deposit: [
       { type: 'ETB', amount: 3800 },
       { type: 'USD', amount: 2300 },
@@ -168,7 +168,7 @@ export const initialUsers: User[] = [
     dateOfBirth: '1992-02-17',
     nid: 'NID1357902468',
     kebeleId: 'KEB011',
-    avatar: 'https://picsum.photos/200',
+    avatar: `https://picsum.photos/200?random=${Math.random()}`,
     deposit: [
       { type: 'ETB', amount: 4200 },
       { type: 'USD', amount: 2600 },
@@ -183,7 +183,7 @@ export const initialUsers: User[] = [
     dateOfBirth: '1984-10-05',
     nid: 'NID2468013579',
     kebeleId: 'KEB012',
-    avatar: 'https://picsum.photos/200',
+    avatar: `https://picsum.photos/200?random=${Math.random()}`,
     deposit: [
       { type: 'ETB', amount: 3600 },
       { type: 'USD', amount: 2100 },
@@ -198,7 +198,7 @@ export const initialUsers: User[] = [
     dateOfBirth: '1995-12-21',
     nid: 'NID3691470258',
     kebeleId: 'KEB013',
-    avatar: 'https://picsum.photos/200',
+    avatar: `https://picsum.photos/200?random=${Math.random()}`,
     deposit: [
       { type: 'ETB', amount: 2900 },
       { type: 'USD', amount: 1750 },
@@ -213,7 +213,7 @@ export const initialUsers: User[] = [
     dateOfBirth: '1990-07-11',
     nid: 'NID4702581369',
     kebeleId: 'KEB014',
-    avatar: 'https://picsum.photos/200',
+    avatar: `https://picsum.photos/200?random=${Math.random()}`,
     deposit: [
       { type: 'ETB', amount: 4600 },
       { type: 'USD', amount: 2800 },
@@ -228,7 +228,7 @@ export const initialUsers: User[] = [
     dateOfBirth: '1988-04-26',
     nid: 'NID5814703692',
     kebeleId: 'KEB015',
-    avatar: 'https://picsum.photos/200',
+    avatar: `https://picsum.photos/200?random=${Math.random()}`,
     deposit: [
       { type: 'ETB', amount: 3300 },
       { type: 'USD', amount: 2000 },
@@ -243,7 +243,7 @@ export const initialUsers: User[] = [
     dateOfBirth: '1993-01-09',
     nid: 'NID6925814703',
     kebeleId: 'KEB016',
-    avatar: 'https://picsum.photos/200',
+    avatar: `https://picsum.photos/200?random=${Math.random()}`,
     deposit: [
       { type: 'ETB', amount: 3900 },
       { type: 'USD', amount: 2400 },
@@ -258,7 +258,7 @@ export const initialUsers: User[] = [
     dateOfBirth: '1991-11-14',
     nid: 'NID7036925814',
     kebeleId: 'KEB017',
-    avatar: 'https://picsum.photos/200',
+    avatar: `https://picsum.photos/200?random=${Math.random()}`,
     deposit: [
       { type: 'ETB', amount: 2600 },
       { type: 'USD', amount: 1550 },
@@ -273,7 +273,7 @@ export const initialUsers: User[] = [
     dateOfBirth: '1987-05-07',
     nid: 'NID8147036925',
     kebeleId: 'KEB018',
-    avatar: 'https://picsum.photos/200',
+    avatar: `https://picsum.photos/200?random=${Math.random()}`,
     deposit: [
       { type: 'ETB', amount: 4100 },
       { type: 'USD', amount: 2700 },
@@ -288,7 +288,7 @@ export const initialUsers: User[] = [
     dateOfBirth: '1994-08-20',
     nid: 'NID9258147036',
     kebeleId: 'KEB019',
-    avatar: 'https://picsum.photos/200',
+    avatar: `https://picsum.photos/200?random=${Math.random()}`,
     deposit: [
       { type: 'ETB', amount: 3400 },
       { type: 'USD', amount: 2050 },
@@ -303,7 +303,7 @@ export const initialUsers: User[] = [
     dateOfBirth: '1989-03-13',
     nid: 'NID0369258147',
     kebeleId: 'KEB020',
-    avatar: 'https://picsum.photos/200',
+    avatar: `https://picsum.photos/200?random=${Math.random()}`,
     deposit: [
       { type: 'ETB', amount: 4300 },
       { type: 'USD', amount: 2900 },
@@ -321,6 +321,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_001')!,
   },
   {
     userId: 'USER_002',
@@ -331,6 +332,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_002')!,
   },
   {
     userId: 'USER_003',
@@ -341,6 +343,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_003')!,
   },
   {
     userId: 'USER_004',
@@ -351,6 +354,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_004')!,
   },
   {
     userId: 'USER_005',
@@ -361,6 +365,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_005')!,
   },
   {
     userId: 'USER_006',
@@ -371,6 +376,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_006')!,
   },
   {
     userId: 'USER_007',
@@ -381,6 +387,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_007')!,
   },
   {
     userId: 'USER_008',
@@ -391,6 +398,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_008')!,
   },
   {
     userId: 'USER_009',
@@ -401,6 +409,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_009')!,
   },
   {
     userId: 'USER_010',
@@ -411,6 +420,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_010')!,
   },
   {
     userId: 'USER_011',
@@ -421,6 +431,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_011')!,
   },
   {
     userId: 'USER_012',
@@ -431,6 +442,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_012')!,
   },
   {
     userId: 'USER_013',
@@ -441,6 +453,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_013')!,
   },
   {
     userId: 'USER_014',
@@ -451,6 +464,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_014')!,
   },
   {
     userId: 'USER_015',
@@ -461,6 +475,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_015')!,
   },
   {
     userId: 'USER_016',
@@ -471,6 +486,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_016')!,
   },
   {
     userId: 'USER_017',
@@ -481,6 +497,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_017')!,
   },
   {
     userId: 'USER_018',
@@ -491,6 +508,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_018')!,
   },
   {
     userId: 'USER_019',
@@ -501,6 +519,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_019')!,
   },
   {
     userId: 'USER_020',
@@ -511,6 +530,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_020')!,
   },
   {
     userId: 'USER_001',
@@ -521,6 +541,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_001')!,
   },
   {
     userId: 'USER_002',
@@ -531,6 +552,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_002')!,
   },
   {
     userId: 'USER_003',
@@ -541,6 +563,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_003')!,
   },
   {
     userId: 'USER_004',
@@ -551,6 +574,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_004')!,
   },
   {
     userId: 'USER_005',
@@ -561,6 +585,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_005')!,
   },
   {
     userId: 'USER_006',
@@ -571,6 +596,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_006')!,
   },
   {
     userId: 'USER_007',
@@ -581,6 +607,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_007')!,
   },
   {
     userId: 'USER_008',
@@ -591,6 +618,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_008')!,
   },
   {
     userId: 'USER_009',
@@ -601,6 +629,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_009')!,
   },
   {
     userId: 'USER_010',
@@ -611,6 +640,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_010')!,
   },
   {
     userId: 'USER_011',
@@ -621,6 +651,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_011')!,
   },
   {
     userId: 'USER_012',
@@ -631,6 +662,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_012')!,
   },
   {
     userId: 'USER_013',
@@ -641,6 +673,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_013')!,
   },
   {
     userId: 'USER_014',
@@ -651,6 +684,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_014')!,
   },
   {
     userId: 'USER_015',
@@ -661,6 +695,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_015')!,
   },
   {
     userId: 'USER_016',
@@ -671,6 +706,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_016')!,
   },
   {
     userId: 'USER_017',
@@ -681,6 +717,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_017')!,
   },
   {
     userId: 'USER_018',
@@ -691,6 +728,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_018')!,
   },
   {
     userId: 'USER_019',
@@ -701,6 +739,7 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_019')!,
   },
   {
     userId: 'USER_020',
@@ -711,5 +750,6 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
+    user: initialUsers.find((u) => u.id === 'USER_020')!,
   },
 ]

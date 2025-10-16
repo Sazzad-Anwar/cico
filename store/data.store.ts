@@ -15,6 +15,7 @@ export type Transfer = {
   transactionId: string
   type: 'sent' | 'received'
   currencyType?: 'ETB' | 'USD'
+  user: User
 }
 
 interface DataStore {
@@ -26,24 +27,36 @@ interface DataStore {
   setSelectedUser: (user: User | null) => void
   addUser: (user: User) => void
   addTransfer: (transfer: Transfer) => void
+  deleteTransfer: (transactionId: string) => void
   searchTransaction: (query: string) => void
   refillDB: () => void
   isLoading: Boolean
   error: string | null
 }
 
-const loadUsers = async (): Promise<User[]> => {
+const loadUsers = async (): Promise<{
+  users: User[]
+  transfers: Transfer[]
+}> => {
   try {
-    const users = await AsyncStorage.getItem('users')
-    if (users) {
-      return JSON.parse(users)
+    const usersData = await AsyncStorage.getItem('users')
+    const transfers = await AsyncStorage.getItem('transfers')
+    if (usersData && transfers) {
+      return { users: JSON.parse(usersData), transfers: JSON.parse(transfers) }
     } else {
       await AsyncStorage.setItem('users', JSON.stringify(initialUsers))
-      return initialUsers
+      await AsyncStorage.setItem('transfers', JSON.stringify(initialTransfers))
+      return {
+        users: initialUsers,
+        transfers: initialTransfers,
+      }
     }
   } catch (error) {
     console.log(error)
-    return []
+    return {
+      users: [],
+      transfers: [],
+    }
   }
 }
 
@@ -123,6 +136,30 @@ const useDataStore = create<DataStore>((set, get) => ({
       }))
     }
   },
+  deleteTransfer: async (transactionId) => {
+    try {
+      const transfers = get().transfers
+      const transferExists = transfers.find(
+        (t) => t.transactionId === transactionId,
+      )
+
+      if (!transferExists) return
+
+      const updatedTransfers = transfers.filter(
+        (t) => t.transactionId !== transactionId,
+      )
+      set(() => ({
+        transfers: updatedTransfers,
+      }))
+      await AsyncStorage.setItem('transfers', JSON.stringify(updatedTransfers))
+    } catch (error) {
+      console.log(error)
+      set({
+        error:
+          error instanceof Error ? error.message : 'Delete transfer failed',
+      })
+    }
+  },
   addTransfer: async (transfer) => {
     try {
       const newTransfer = {
@@ -175,8 +212,8 @@ const useDataStore = create<DataStore>((set, get) => ({
 }))
 
 // Initialize users after store creation
-loadUsers().then((users) => {
-  useDataStore.setState({ users })
+loadUsers().then((data) => {
+  useDataStore.setState({ users: data.users, transfers: data.transfers })
 })
 
 export default useDataStore
