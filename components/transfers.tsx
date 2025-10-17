@@ -1,11 +1,14 @@
 import { Link, useRouter } from 'expo-router'
-import { Image, Text, View } from 'moti'
+import { Image, ScrollView, Text, View } from 'moti'
 import useDataStore from '../store/data.store'
-import { KeyboardAvoidingView, Platform, TouchableOpacity } from 'react-native'
+import {
+  KeyboardAvoidingView,
+  Platform,
+  Pressable,
+  TouchableOpacity,
+} from 'react-native'
 import { Check, Plus, X } from 'lucide-react-native'
 import { cn } from '../lib/utils'
-import { Dispatch, SetStateAction, useState } from 'react'
-import { UserDeatils } from '../store/data.store'
 import Loader from './loader'
 
 export default function Transfers({
@@ -17,19 +20,9 @@ export default function Transfers({
   title?: string
   isUserSelectable?: boolean
 }) {
-  const { transfers, setSelectedUser, selectedUser } = useDataStore()
-  const [isLoading, setIsLoading] = useState(false)
-  const [dialogOpen, setDialogOpen] = useState(false)
-  const { navigate } = useRouter()
-
-  const handleAddContact = () => {
-    setDialogOpen(false)
-    setIsLoading(true)
-    setTimeout(() => {
-      setIsLoading(false)
-      // navigate('/added-successfully');
-    }, 2000)
-  }
+  const { transfers, setSelectedUser, selectedUser, isLoading, users } =
+    useDataStore()
+  const { push } = useRouter()
 
   return (
     <>
@@ -43,24 +36,24 @@ export default function Transfers({
         <View className="mb-2 flex flex-row items-center justify-between">
           <Text className="font-dmSans text-lg font-semibold">{title}</Text>
           <Link
-            href="/history"
+            href="/history/all"
             className="font-dmSans text-sm font-semibold text-[#245C0B]"
           >
             View All
           </Link>
         </View>
-        <View className="android:gap-1 ios:gap-3 flex flex-row items-center justify-between rounded-xl bg-white px-3 py-2">
-          {transfers.slice(0, 4).map((user, index) => (
+        <View className="flex flex-row items-center justify-between rounded-xl bg-white px-3 py-3">
+          {users.slice(0, 4).map((user, index) => (
             <TouchableOpacity
               onPress={() => {
                 isUserSelectable ? setSelectedUser(user) : null
               }}
               key={user.name + '_' + index}
-              className="android:gap-1 ios:gap-2 relative flex flex-col items-center justify-center pt-1"
+              className="android:gap-1 ios:gap-2 relative flex flex-col items-center justify-center pt-1 w-16"
             >
               <Image
                 className="size-12 rounded-xl"
-                source={user.image}
+                source={{ uri: user.avatar }}
               />
               <Text className="text-center font-dmSans text-xs font-medium leading-none">
                 {user.name.split(' ')[0]}
@@ -75,7 +68,23 @@ export default function Transfers({
               ) : null}
             </TouchableOpacity>
           ))}
-          <View className="h-16 w-px bg-gray-300" />
+
+          {/* <View className="h-16 w-px bg-gray-300" /> */}
+          <TouchableOpacity
+            onPress={() => push('/add-user')}
+            className="flex flex-col items-center justify-center gap-2 border-l border-gray-300 w-20"
+          >
+            <View className="android:size-11 ios:size-12 flex items-center justify-center rounded-full bg-gray-200">
+              <Plus
+                size={30}
+                color="#329600"
+              />
+            </View>
+            <Text className="text-center font-dmSans text-xs font-medium leading-none">
+              Add new
+            </Text>
+          </TouchableOpacity>
+
           {/* <AlertDialog open={dialogOpen} onOpenChange={setDialogOpen}>
             <AlertDialogTrigger asChild>
               <TouchableOpacity className="flex flex-col items-center justify-center gap-2">

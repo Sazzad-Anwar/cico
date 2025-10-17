@@ -42,7 +42,7 @@ export default function WalletCard() {
               ? user?.deposit
                   ?.find((item) => item.type === selectedDeposit)
                   ?.amount.toFixed(2) ||
-                user?.deposit.reduce((a, b) => a + b.amount, 0).toFixed(2)
+                user?.deposit?.reduce((a, b) => a + b.amount, 0).toFixed(2)
               : Array.from({ length: 5 })
                   .map(() => '*')
                   .join('')}

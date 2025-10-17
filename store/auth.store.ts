@@ -1,28 +1,50 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { create } from 'zustand'
-import { z } from 'zod'
+import z from 'zod'
+
+export const UserSchema = z.object({
+  id: z.string(),
+  name: z.string().min(3, 'Name must be at least 3 characters long'),
+  email: z.email('Invalid email address'),
+  phoneNumber: z
+    .string()
+    .min(10, 'Phone number must be at least 10 digits long'),
+  accountNumber: z.string().optional(),
+  dateOfBirth: z.string(),
+  nid: z.string().min(10, 'NID must be at least 10 characters long'),
+  kebeleId: z.string().min(5, 'Kebele ID must be at least 5 characters long'),
+  avatar: z.url().optional(),
+  deposit: z
+    .array(
+      z.object({
+        type: z.enum(['ETB', 'USD']),
+        amount: z.number().min(0, 'Deposit amount cannot be negative'),
+      }),
+    )
+    .default([
+      {
+        type: 'ETB',
+        amount: Math.random() * 10000,
+      },
+      {
+        type: 'USD',
+        amount: Math.random() * 10000,
+      },
+    ])
+    .optional(),
+})
 
 // SignupSchema from signup.tsx
-export const SignupSchema = z
-  .object({
-    name: z.string().min(3, 'Name must be at least 3 characters long'),
-    email: z.email('Invalid email address'),
-    phoneNumber: z
-      .string()
-      .min(10, 'Phone number must be at least 10 digits long'),
-    dateOfBirth: z.string(),
-    nid: z.string().min(10, 'NID must be at least 10 characters long'),
-    kebeleId: z.string().min(5, 'Kebele ID must be at least 5 characters long'),
-    password: z.string().min(6, 'Password must be at least 6 characters long'),
-    // confirmPassword field to match password
-    confirmPassword: z
-      .string()
-      .min(6, 'Confirm Password must be at least 6 characters long'),
-  })
-  .refine((data) => data.password === data.confirmPassword, {
-    error: 'Passwords do not match',
-    path: ['confirmPassword'],
-  })
+export const SignupSchema = UserSchema.extend({
+  password: z.string().min(6, 'Password must be at least 6 characters long'),
+  // confirmPassword field to match password
+  confirmPassword: z
+    .string()
+    .min(6, 'Confirm Password must be at least 6 characters long'),
+}).refine((data) => data.password === data.confirmPassword, {
+  error: 'Passwords do not match',
+  path: ['confirmPassword'],
+})
 
 export type SignupData = z.infer<typeof SignupSchema>
 
@@ -75,18 +97,7 @@ const findUserByEmail = async (
 }
 
 // Types for our auth state
-export interface User {
-  id: string
-  name: string
-  email: string
-  phoneNumber: string
-  accountNumber?: string
-  dateOfBirth: string
-  nid: string
-  kebeleId: string
-  avatar?: string
-  deposit: { type: 'ETB' | 'USD'; amount: number }[]
-}
+export type User = z.infer<typeof UserSchema>
 
 export interface AuthState {
   // State

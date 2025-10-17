@@ -14,6 +14,7 @@ import { KeyboardProvider } from 'react-native-keyboard-controller'
 import useAuthStore from '../store/auth.store'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
+import useDataStore from '../store/data.store'
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -44,6 +45,11 @@ export default function RootLayout() {
 function RootLayoutNav() {
   const [colorMode, setColorMode] = useState<'light' | 'dark'>('light')
   const { isAuthenticated, isLoading } = useAuthStore()
+  const { loadData } = useDataStore()
+
+  useEffect(() => {
+    loadData()
+  }, [])
 
   return (
     <SafeAreaProvider>
@@ -89,6 +95,14 @@ function RootLayoutNav() {
                   <Stack.Screen
                     name="(show-data)"
                     options={{ headerShown: false }}
+                  />
+
+                  <Stack.Screen
+                    name="add-user"
+                    options={{
+                      headerShown: false,
+                      presentation: 'containedModal',
+                    }}
                   />
                 </Stack.Protected>
               </Stack>

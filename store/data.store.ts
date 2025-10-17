@@ -113,9 +113,11 @@ const useDataStore = create<DataStore>((set, get) => ({
   },
   addUser: async (user) => {
     try {
+      set((state) => ({ ...state, isLoading: true, error: null }))
+      await new Promise((resolve) => setTimeout(resolve, 1000))
+      const users = get().users
       user = {
         ...user,
-        id: `USER_${Date.now()}`,
         accountNumber: generateAccountNumber(),
         avatar: user.avatar,
         deposit: [
@@ -124,7 +126,9 @@ const useDataStore = create<DataStore>((set, get) => ({
         ],
       }
       set((state) => ({
-        users: [...state.users, user],
+        ...state,
+        users: [user, ...users],
+        isLoading: false,
       }))
 
       await AsyncStorage.setItem('users', JSON.stringify(get().users))
@@ -200,34 +204,21 @@ const useDataStore = create<DataStore>((set, get) => ({
       })
     }
   },
-  searchTransaction: (query) => {
-    const findUser = initialUsers.find((user) =>
-      user.name.toLowerCase().includes(query.toLowerCase()),
-    )
-    const userId = findUser ? findUser.id : null
-    if (userId) {
-      set((state) => ({
-        transfers: query.length
-          ? state.transfers.filter(
-              (transfer) =>
-                transfer.userId === userId &&
-                transfer.transactionId
-                  .toLowerCase()
-                  .includes(query.toLowerCase()),
-            )
-          : initialTransfers,
-      }))
-    } else {
-      set((state) => ({
-        transfers: query.length
-          ? state.transfers.filter((transfer) =>
-              transfer.transactionId
-                .toLowerCase()
-                .includes(query.toLowerCase()),
-            )
-          : initialTransfers,
-      }))
-    }
+  searchTransaction: async (query) => {
+    set((state) => ({ ...state, isLoading: true }))
+
+    await new Promise((resolve) => setTimeout(resolve, 500))
+
+    set((state) => ({
+      transfers: query.length
+        ? state.transfers.filter(
+            (transfer) =>
+              transfer.user.name.toLowerCase().includes(query.toLowerCase()) ||
+              transfer.transactionId.includes(query),
+          )
+        : initialTransfers,
+      isLoading: false,
+    }))
   },
 }))
 

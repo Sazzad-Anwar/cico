@@ -1,6 +1,7 @@
 import dayjs from 'dayjs'
 import { User } from '../store/auth.store'
 import { Transfer } from '../store/data.store'
+import uuid from 'react-native-uuid'
 
 export const generateAccountNumber = () => {
   // Example: LR + 4 random digits + KA + 4 random digits
@@ -10,7 +11,7 @@ export const generateAccountNumber = () => {
 
 export const initialUsers: User[] = [
   {
-    id: 'USER_001',
+    id: uuid.v4() as string,
     name: 'Annette Warrent',
     email: 'annette.warrent@example.com',
     phoneNumber: '+251911234567',
@@ -18,14 +19,14 @@ export const initialUsers: User[] = [
     dateOfBirth: '1990-05-15',
     nid: 'NID1234567890',
     kebeleId: 'KEB001',
-    avatar: `https://picsum.photos/200?random=${Math.random()}`,
+    avatar: `https://picsum.photos/200?random=1`,
     deposit: [
       { type: 'ETB', amount: 2500 },
       { type: 'USD', amount: 1500 },
     ],
   },
   {
-    id: 'USER_002',
+    id: uuid.v4() as string,
     name: 'Devon Walter',
     email: 'devon.walter@example.com',
     phoneNumber: '+251922345678',
@@ -33,14 +34,14 @@ export const initialUsers: User[] = [
     dateOfBirth: '1988-09-22',
     nid: 'NID2345678901',
     kebeleId: 'KEB002',
-    avatar: `https://picsum.photos/200?random=${Math.random()}`,
+    avatar: `https://picsum.photos/200?random=2`,
     deposit: [
       { type: 'ETB', amount: 3000 },
       { type: 'USD', amount: 2000 },
     ],
   },
   {
-    id: 'USER_003',
+    id: uuid.v4() as string,
     name: 'Floyd Miles',
     email: 'floyd.miles@example.com',
     phoneNumber: '+251933456789',
@@ -48,14 +49,14 @@ export const initialUsers: User[] = [
     dateOfBirth: '1992-12-08',
     nid: 'NID3456789012',
     kebeleId: 'KEB003',
-    avatar: `https://picsum.photos/200?random=${Math.random()}`,
+    avatar: `https://picsum.photos/200?random=3`,
     deposit: [
       { type: 'ETB', amount: 4000 },
       { type: 'USD', amount: 2500 },
     ],
   },
   {
-    id: 'USER_004',
+    id: uuid.v4() as string,
     name: 'Jonathon Michael',
     email: 'jonathon.michael@example.com',
     phoneNumber: '+251944567890',
@@ -63,14 +64,14 @@ export const initialUsers: User[] = [
     dateOfBirth: '1985-03-30',
     nid: 'NID4567890123',
     kebeleId: 'KEB004',
-    avatar: `https://picsum.photos/200?random=${Math.random()}`,
+    avatar: `https://picsum.photos/200?random=4`,
     deposit: [
       { type: 'ETB', amount: 5000 },
       { type: 'USD', amount: 3000 },
     ],
   },
   {
-    id: 'USER_005',
+    id: uuid.v4() as string,
     name: 'Sarah Johnson',
     email: 'sarah.johnson@example.com',
     phoneNumber: '+251955678901',
@@ -78,14 +79,14 @@ export const initialUsers: User[] = [
     dateOfBirth: '1993-07-14',
     nid: 'NID5678901234',
     kebeleId: 'KEB005',
-    avatar: `https://picsum.photos/200?random=${Math.random()}`,
+    avatar: `https://picsum.photos/200?random=5`,
     deposit: [
       { type: 'ETB', amount: 3500 },
       { type: 'USD', amount: 1800 },
     ],
   },
   {
-    id: 'USER_006',
+    id: uuid.v4() as string,
     name: 'Michael Chen',
     email: 'michael.chen@example.com',
     phoneNumber: '+251966789012',
@@ -93,14 +94,14 @@ export const initialUsers: User[] = [
     dateOfBirth: '1987-11-25',
     nid: 'NID6789012345',
     kebeleId: 'KEB006',
-    avatar: `https://picsum.photos/200?random=${Math.random()}`,
+    avatar: `https://picsum.photos/200?random=6`,
     deposit: [
       { type: 'ETB', amount: 4500 },
       { type: 'USD', amount: 2200 },
     ],
   },
   {
-    id: 'USER_007',
+    id: uuid.v4() as string,
     name: 'Emily Rodriguez',
     email: 'emily.rodriguez@example.com',
     phoneNumber: '+251977890123',
@@ -108,14 +109,14 @@ export const initialUsers: User[] = [
     dateOfBirth: '1991-04-03',
     nid: 'NID7890123456',
     kebeleId: 'KEB007',
-    avatar: `https://picsum.photos/200?random=${Math.random()}`,
+    avatar: `https://picsum.photos/200?random=7`,
     deposit: [
       { type: 'ETB', amount: 2800 },
       { type: 'USD', amount: 1600 },
     ],
   },
   {
-    id: 'USER_008',
+    id: uuid.v4() as string,
     name: 'David Thompson',
     email: 'david.thompson@example.com',
     phoneNumber: '+251988901234',
@@ -123,14 +124,14 @@ export const initialUsers: User[] = [
     dateOfBirth: '1989-01-18',
     nid: 'NID8901234567',
     kebeleId: 'KEB008',
-    avatar: `https://picsum.photos/200?random=${Math.random()}`,
+    avatar: `https://picsum.photos/200?random=8`,
     deposit: [
       { type: 'ETB', amount: 3200 },
       { type: 'USD', amount: 1900 },
     ],
   },
   {
-    id: 'USER_009',
+    id: uuid.v4() as string,
     name: 'Lisa Anderson',
     email: 'lisa.anderson@example.com',
     phoneNumber: '+251999012345',
@@ -138,14 +139,14 @@ export const initialUsers: User[] = [
     dateOfBirth: '1994-06-12',
     nid: 'NID9012345678',
     kebeleId: 'KEB009',
-    avatar: `https://picsum.photos/200?random=${Math.random()}`,
+    avatar: `https://picsum.photos/200?random=9`,
     deposit: [
       { type: 'ETB', amount: 2700 },
       { type: 'USD', amount: 1700 },
     ],
   },
   {
-    id: 'USER_010',
+    id: uuid.v4() as string,
     name: 'Robert Wilson',
     email: 'robert.wilson@example.com',
     phoneNumber: '+251900123456',
@@ -153,14 +154,14 @@ export const initialUsers: User[] = [
     dateOfBirth: '1986-08-29',
     nid: 'NID0123456789',
     kebeleId: 'KEB010',
-    avatar: `https://picsum.photos/200?random=${Math.random()}`,
+    avatar: `https://picsum.photos/200?random=10`,
     deposit: [
       { type: 'ETB', amount: 3800 },
       { type: 'USD', amount: 2300 },
     ],
   },
   {
-    id: 'USER_011',
+    id: uuid.v4() as string,
     name: 'Jessica Brown',
     email: 'jessica.brown@example.com',
     phoneNumber: '+251901234567',
@@ -168,14 +169,14 @@ export const initialUsers: User[] = [
     dateOfBirth: '1992-02-17',
     nid: 'NID1357902468',
     kebeleId: 'KEB011',
-    avatar: `https://picsum.photos/200?random=${Math.random()}`,
+    avatar: `https://picsum.photos/200?random=11`,
     deposit: [
       { type: 'ETB', amount: 4200 },
       { type: 'USD', amount: 2600 },
     ],
   },
   {
-    id: 'USER_012',
+    id: uuid.v4() as string,
     name: 'Christopher Davis',
     email: 'christopher.davis@example.com',
     phoneNumber: '+251902345678',
@@ -183,14 +184,14 @@ export const initialUsers: User[] = [
     dateOfBirth: '1984-10-05',
     nid: 'NID2468013579',
     kebeleId: 'KEB012',
-    avatar: `https://picsum.photos/200?random=${Math.random()}`,
+    avatar: `https://picsum.photos/200?random=12`,
     deposit: [
       { type: 'ETB', amount: 3600 },
       { type: 'USD', amount: 2100 },
     ],
   },
   {
-    id: 'USER_013',
+    id: uuid.v4() as string,
     name: 'Amanda Garcia',
     email: 'amanda.garcia@example.com',
     phoneNumber: '+251903456789',
@@ -198,14 +199,14 @@ export const initialUsers: User[] = [
     dateOfBirth: '1995-12-21',
     nid: 'NID3691470258',
     kebeleId: 'KEB013',
-    avatar: `https://picsum.photos/200?random=${Math.random()}`,
+    avatar: `https://picsum.photos/200?random=13`,
     deposit: [
       { type: 'ETB', amount: 2900 },
       { type: 'USD', amount: 1750 },
     ],
   },
   {
-    id: 'USER_014',
+    id: uuid.v4() as string,
     name: 'Daniel Martinez',
     email: 'daniel.martinez@example.com',
     phoneNumber: '+251904567890',
@@ -213,14 +214,14 @@ export const initialUsers: User[] = [
     dateOfBirth: '1990-07-11',
     nid: 'NID4702581369',
     kebeleId: 'KEB014',
-    avatar: `https://picsum.photos/200?random=${Math.random()}`,
+    avatar: `https://picsum.photos/200?random=14`,
     deposit: [
       { type: 'ETB', amount: 4600 },
       { type: 'USD', amount: 2800 },
     ],
   },
   {
-    id: 'USER_015',
+    id: uuid.v4() as string,
     name: 'Rachel Taylor',
     email: 'rachel.taylor@example.com',
     phoneNumber: '+251905678901',
@@ -228,14 +229,14 @@ export const initialUsers: User[] = [
     dateOfBirth: '1988-04-26',
     nid: 'NID5814703692',
     kebeleId: 'KEB015',
-    avatar: `https://picsum.photos/200?random=${Math.random()}`,
+    avatar: `https://picsum.photos/200?random=15`,
     deposit: [
       { type: 'ETB', amount: 3300 },
       { type: 'USD', amount: 2000 },
     ],
   },
   {
-    id: 'USER_016',
+    id: uuid.v4() as string,
     name: 'Andrew White',
     email: 'andrew.white@example.com',
     phoneNumber: '+251906789012',
@@ -243,14 +244,14 @@ export const initialUsers: User[] = [
     dateOfBirth: '1993-01-09',
     nid: 'NID6925814703',
     kebeleId: 'KEB016',
-    avatar: `https://picsum.photos/200?random=${Math.random()}`,
+    avatar: `https://picsum.photos/200?random=16`,
     deposit: [
       { type: 'ETB', amount: 3900 },
       { type: 'USD', amount: 2400 },
     ],
   },
   {
-    id: 'USER_017',
+    id: uuid.v4() as string,
     name: 'Stephanie Lewis',
     email: 'stephanie.lewis@example.com',
     phoneNumber: '+251907890123',
@@ -258,14 +259,14 @@ export const initialUsers: User[] = [
     dateOfBirth: '1991-11-14',
     nid: 'NID7036925814',
     kebeleId: 'KEB017',
-    avatar: `https://picsum.photos/200?random=${Math.random()}`,
+    avatar: `https://picsum.photos/200?random=17`,
     deposit: [
       { type: 'ETB', amount: 2600 },
       { type: 'USD', amount: 1550 },
     ],
   },
   {
-    id: 'USER_018',
+    id: uuid.v4() as string,
     name: 'Kevin Clark',
     email: 'kevin.clark@example.com',
     phoneNumber: '+251908901234',
@@ -273,14 +274,14 @@ export const initialUsers: User[] = [
     dateOfBirth: '1987-05-07',
     nid: 'NID8147036925',
     kebeleId: 'KEB018',
-    avatar: `https://picsum.photos/200?random=${Math.random()}`,
+    avatar: `https://picsum.photos/200?random=18`,
     deposit: [
       { type: 'ETB', amount: 4100 },
       { type: 'USD', amount: 2700 },
     ],
   },
   {
-    id: 'USER_019',
+    id: uuid.v4() as string,
     name: 'Nicole Walker',
     email: 'nicole.walker@example.com',
     phoneNumber: '+251909012345',
@@ -288,14 +289,14 @@ export const initialUsers: User[] = [
     dateOfBirth: '1994-08-20',
     nid: 'NID9258147036',
     kebeleId: 'KEB019',
-    avatar: `https://picsum.photos/200?random=${Math.random()}`,
+    avatar: `https://picsum.photos/200?random=19`,
     deposit: [
       { type: 'ETB', amount: 3400 },
       { type: 'USD', amount: 2050 },
     ],
   },
   {
-    id: 'USER_020',
+    id: uuid.v4() as string,
     name: 'Brandon Hall',
     email: 'brandon.hall@example.com',
     phoneNumber: '+251910123456',
@@ -303,7 +304,7 @@ export const initialUsers: User[] = [
     dateOfBirth: '1989-03-13',
     nid: 'NID0369258147',
     kebeleId: 'KEB020',
-    avatar: `https://picsum.photos/200?random=${Math.random()}`,
+    avatar: `https://picsum.photos/200?random=20`,
     deposit: [
       { type: 'ETB', amount: 4300 },
       { type: 'USD', amount: 2900 },
@@ -313,7 +314,7 @@ export const initialUsers: User[] = [
 
 export const initialTransfers: Transfer[] = [
   {
-    userId: 'USER_001',
+    userId: initialUsers[0].id,
     date: dayjs(new Date())
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -321,10 +322,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_001')!,
+    user: initialUsers.find((u) => u.id === initialUsers[0].id)!,
   },
   {
-    userId: 'USER_002',
+    userId: initialUsers[1].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -332,10 +333,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_002')!,
+    user: initialUsers.find((u) => u.id === initialUsers[1].id)!,
   },
   {
-    userId: 'USER_003',
+    userId: initialUsers[2].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -343,10 +344,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_003')!,
+    user: initialUsers.find((u) => u.id === initialUsers[2].id)!,
   },
   {
-    userId: 'USER_004',
+    userId: initialUsers[3].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -354,10 +355,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_004')!,
+    user: initialUsers.find((u) => u.id === initialUsers[3].id)!,
   },
   {
-    userId: 'USER_005',
+    userId: initialUsers[4].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -365,10 +366,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_005')!,
+    user: initialUsers.find((u) => u.id === initialUsers[4].id)!,
   },
   {
-    userId: 'USER_006',
+    userId: initialUsers[5].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -376,10 +377,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_006')!,
+    user: initialUsers.find((u) => u.id === initialUsers[5].id)!,
   },
   {
-    userId: 'USER_007',
+    userId: initialUsers[6].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -387,10 +388,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_007')!,
+    user: initialUsers.find((u) => u.id === initialUsers[6].id)!,
   },
   {
-    userId: 'USER_008',
+    userId: initialUsers[7].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -398,10 +399,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_008')!,
+    user: initialUsers.find((u) => u.id === initialUsers[7].id)!,
   },
   {
-    userId: 'USER_009',
+    userId: initialUsers[8].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -409,10 +410,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_009')!,
+    user: initialUsers.find((u) => u.id === initialUsers[8].id)!,
   },
   {
-    userId: 'USER_010',
+    userId: initialUsers[9].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -420,10 +421,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_010')!,
+    user: initialUsers.find((u) => u.id === initialUsers[9].id)!,
   },
   {
-    userId: 'USER_011',
+    userId: initialUsers[10].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -431,10 +432,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_011')!,
+    user: initialUsers.find((u) => u.id === initialUsers[10].id)!,
   },
   {
-    userId: 'USER_012',
+    userId: initialUsers[11].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -442,10 +443,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_012')!,
+    user: initialUsers.find((u) => u.id === initialUsers[11].id)!,
   },
   {
-    userId: 'USER_013',
+    userId: initialUsers[12].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -453,10 +454,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_013')!,
+    user: initialUsers.find((u) => u.id === initialUsers[12].id)!,
   },
   {
-    userId: 'USER_014',
+    userId: initialUsers[13].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -464,10 +465,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_014')!,
+    user: initialUsers.find((u) => u.id === initialUsers[13].id)!,
   },
   {
-    userId: 'USER_015',
+    userId: initialUsers[14].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -475,10 +476,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_015')!,
+    user: initialUsers.find((u) => u.id === initialUsers[14].id)!,
   },
   {
-    userId: 'USER_016',
+    userId: initialUsers[15].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -486,10 +487,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_016')!,
+    user: initialUsers.find((u) => u.id === initialUsers[15].id)!,
   },
   {
-    userId: 'USER_017',
+    userId: initialUsers[16].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -497,10 +498,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_017')!,
+    user: initialUsers.find((u) => u.id === initialUsers[16].id)!,
   },
   {
-    userId: 'USER_018',
+    userId: initialUsers[17].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -508,10 +509,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_018')!,
+    user: initialUsers.find((u) => u.id === initialUsers[17].id)!,
   },
   {
-    userId: 'USER_019',
+    userId: initialUsers[18].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -519,10 +520,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_019')!,
+    user: initialUsers.find((u) => u.id === initialUsers[18].id)!,
   },
   {
-    userId: 'USER_020',
+    userId: initialUsers[19].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -530,10 +531,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_020')!,
+    user: initialUsers.find((u) => u.id === initialUsers[19].id)!,
   },
   {
-    userId: 'USER_001',
+    userId: initialUsers[0].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -541,10 +542,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_001')!,
+    user: initialUsers.find((u) => u.id === initialUsers[0].id)!,
   },
   {
-    userId: 'USER_002',
+    userId: initialUsers[1].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -552,10 +553,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_002')!,
+    user: initialUsers.find((u) => u.id === initialUsers[1].id)!,
   },
   {
-    userId: 'USER_003',
+    userId: initialUsers[2].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -563,10 +564,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_003')!,
+    user: initialUsers.find((u) => u.id === initialUsers[2].id)!,
   },
   {
-    userId: 'USER_004',
+    userId: initialUsers[3].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -574,10 +575,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_004')!,
+    user: initialUsers.find((u) => u.id === initialUsers[3].id)!,
   },
   {
-    userId: 'USER_005',
+    userId: initialUsers[4].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -585,10 +586,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_005')!,
+    user: initialUsers.find((u) => u.id === initialUsers[4].id)!,
   },
   {
-    userId: 'USER_006',
+    userId: initialUsers[5].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -596,10 +597,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_006')!,
+    user: initialUsers.find((u) => u.id === initialUsers[5].id)!,
   },
   {
-    userId: 'USER_007',
+    userId: initialUsers[6].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -607,10 +608,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_007')!,
+    user: initialUsers.find((u) => u.id === initialUsers[6].id)!,
   },
   {
-    userId: 'USER_008',
+    userId: initialUsers[7].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -618,10 +619,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_008')!,
+    user: initialUsers.find((u) => u.id === initialUsers[7].id)!,
   },
   {
-    userId: 'USER_009',
+    userId: initialUsers[8].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -629,10 +630,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_009')!,
+    user: initialUsers.find((u) => u.id === initialUsers[8].id)!,
   },
   {
-    userId: 'USER_010',
+    userId: initialUsers[9].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -640,10 +641,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_010')!,
+    user: initialUsers.find((u) => u.id === initialUsers[9].id)!,
   },
   {
-    userId: 'USER_011',
+    userId: initialUsers[10].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -651,10 +652,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_011')!,
+    user: initialUsers.find((u) => u.id === initialUsers[10].id)!,
   },
   {
-    userId: 'USER_012',
+    userId: initialUsers[11].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -662,10 +663,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_012')!,
+    user: initialUsers.find((u) => u.id === initialUsers[11].id)!,
   },
   {
-    userId: 'USER_013',
+    userId: initialUsers[12].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -673,10 +674,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_013')!,
+    user: initialUsers.find((u) => u.id === initialUsers[12].id)!,
   },
   {
-    userId: 'USER_014',
+    userId: initialUsers[13].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -684,10 +685,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_014')!,
+    user: initialUsers.find((u) => u.id === initialUsers[13].id)!,
   },
   {
-    userId: 'USER_015',
+    userId: initialUsers[14].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -695,10 +696,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_015')!,
+    user: initialUsers.find((u) => u.id === initialUsers[14].id)!,
   },
   {
-    userId: 'USER_016',
+    userId: initialUsers[15].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -706,10 +707,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_016')!,
+    user: initialUsers.find((u) => u.id === initialUsers[15].id)!,
   },
   {
-    userId: 'USER_017',
+    userId: initialUsers[16].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -717,10 +718,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_017')!,
+    user: initialUsers.find((u) => u.id === initialUsers[16].id)!,
   },
   {
-    userId: 'USER_018',
+    userId: initialUsers[17].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -728,10 +729,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_018')!,
+    user: initialUsers.find((u) => u.id === initialUsers[17].id)!,
   },
   {
-    userId: 'USER_019',
+    userId: initialUsers[18].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -739,10 +740,10 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'ETB',
     type: 'received',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_019')!,
+    user: initialUsers.find((u) => u.id === initialUsers[18].id)!,
   },
   {
-    userId: 'USER_020',
+    userId: initialUsers[19].id,
     date: dayjs()
       .subtract(Math.floor(Math.random() * 30), 'day')
       .toISOString(),
@@ -750,6 +751,6 @@ export const initialTransfers: Transfer[] = [
     currencyType: 'USD',
     type: 'sent',
     transactionId: generateAccountNumber(),
-    user: initialUsers.find((u) => u.id === 'USER_020')!,
+    user: initialUsers.find((u) => u.id === initialUsers[19].id)!,
   },
 ]

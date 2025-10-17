@@ -120,13 +120,13 @@ export default function ActionButtons() {
           <ActionsheetDragIndicatorWrapper>
             <ActionsheetDragIndicator />
           </ActionsheetDragIndicatorWrapper>
-          <View className="p-4 border-b border-[#E7E7E7] w-full flex flex-row justify-between items-center">
+          <View className="p-4 pb-5 border-b border-[#E7E7E7] w-full flex flex-row justify-between items-center">
             <Text className="text-lg font-semibold text-[#3D3D3D]">
               More Options
             </Text>
             <TouchableOpacity onPress={() => setIsMoreOptionOpen(false)}>
               <X
-                size={24}
+                size={22}
                 color="#3D3D3D"
               />
             </TouchableOpacity>
