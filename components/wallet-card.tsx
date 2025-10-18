@@ -29,7 +29,7 @@ export default function WalletCard() {
         width: width - 10,
         height: height / 3,
       }}
-      className="relative android:mt-5 mx-auto overflow-hidden flex justify-center rounded-2xl"
+      className="relative mx-auto overflow-hidden flex justify-center rounded-2xl"
     >
       <AnimatedWalletCard
         selectedType={selectedDeposit as 'USD' | 'ETB' | 'ALL'}
@@ -121,7 +121,7 @@ function AnimatedWalletCard({
     user?.deposit?.find((item) => item.type === type)?.amount?.toFixed(2)
 
   return (
-    <>
+    <View className="relative h-[250px]">
       <Image
         style={{
           resizeMode: Platform.OS === 'ios' ? 'cover' : 'contain',
@@ -139,18 +139,18 @@ function AnimatedWalletCard({
               : selectedType === 'ALL'
               ? Platform.OS === 'ios'
                 ? 44
-                : 30
+                : 40
               : 30,
         }}
         transition={{
           type: 'spring',
           duration: 400,
         }}
-        className="absolute h-[178px] ios:px-3 android:px-2 z-30 left-0 right-0 backdrop-blur-md overflow-hidden rounded-3xl"
+        className="absolute h-[178px] ios:px-3 android:px-4 z-30 left-0 right-0 backdrop-blur-md overflow-hidden rounded-3xl"
       >
         <ImageBackground
           className="h-full w-full flex flex-row justify-between p-4"
-          resizeMode={Platform.OS === 'ios' ? 'stretch' : 'stretch'}
+          resizeMode={'stretch'}
           source={require('@/assets/images/virtual-card-2.png')}
         >
           <Text className="text-white block text-base font-bold">USD</Text>
@@ -170,18 +170,18 @@ function AnimatedWalletCard({
               : selectedType === 'ALL'
               ? Platform.OS === 'ios'
                 ? 64
-                : 50
+                : 60
               : 34,
         }}
         transition={{
           type: 'spring',
           duration: 400,
         }}
-        className="absolute h-[178px] w-full ios:px-3 android:px-2 z-20 left-0 right-0 rounded-3xl backdrop-blur-md"
+        className="absolute h-[178px] w-full ios:px-3 android:px-4 z-20 left-0 right-0 rounded-3xl backdrop-blur-md"
       >
         <ImageBackground
           className="h-full w-full flex flex-row justify-between p-4"
-          resizeMode={Platform.OS === 'ios' ? 'stretch' : 'contain'}
+          resizeMode={'stretch'}
           source={require('@/assets/images/virtual-card.png')}
         >
           <Text className="text-white block text-base font-bold">ETB</Text>
@@ -194,9 +194,9 @@ function AnimatedWalletCard({
         style={{
           resizeMode: Platform.OS === 'ios' ? 'cover' : 'contain',
         }}
-        className="absolute h-[250px] w-full z-10 left-0 right-0 android:top-4 ios:top-8 bottom-0"
+        className="absolute h-[250px] w-full z-10 left-0 right-0 ios:top-8 bottom-0"
         source={require('@/assets/images/wallet-cover-back.png')}
       />
-    </>
+    </View>
   )
 }
