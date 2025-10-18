@@ -1,38 +1,24 @@
 import { Link, useRouter } from 'expo-router'
 import { ScrollView, Text, View } from 'moti'
-import {
-  Keyboard,
-  KeyboardAvoidingView,
-  Platform,
-  TouchableOpacity,
-  TouchableWithoutFeedback,
-} from 'react-native'
+import { TouchableOpacity } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import { set, z } from 'zod'
+import { z } from 'zod'
 import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Input, InputField } from '../components/ui/input'
 import {
   Checkbox,
-  CheckboxGroup,
   CheckboxIcon,
   CheckboxIndicator,
   CheckboxLabel,
 } from '../components/ui/checkbox'
 import { useEffect, useState } from 'react'
-// import { Label } from '../components/ui/label';
-// import Button from '../components/ButtonComponent';
 import { Icon } from '../components/ui/icon'
 import { CheckIcon, Eye, EyeOff } from 'lucide-react-native'
 import Loader from '../components/loader'
-import { BlurView } from 'expo-blur'
 import useAuthStore from '../store/auth.store'
 import Button from '../components/custom-button'
-import {
-  KeyboardAwareScrollView,
-  KeyboardProvider,
-  KeyboardToolbar,
-} from 'react-native-keyboard-controller'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-controller'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 const LoginSchema = z.object({
@@ -122,7 +108,7 @@ export default function LoginScreen() {
     >
       <ScrollView
         keyboardShouldPersistTaps="handled"
-        className="flex-1 bg-white p-5 h-screen"
+        className="bg-white p-5 h-screen relative"
       >
         <View style={{ marginTop: top }}>
           <Text className="font-dmSans text-xl android:font-bold ios:font-semibold">
@@ -248,27 +234,24 @@ export default function LoginScreen() {
           className="mt-8 bg-button"
           title="Continue"
         />
-
-        <View className="android:px-5 ios:px-px android:pt-80 ios:pt-96 text-[#888888]">
-          <Text className="text-center text-[#888888]">
-            By signing up, you agree to our{' '}
-            <Text className="text-[#329600]">Terms of Service</Text> and{' '}
-            <Text className="text-[#329600]"> Privacy Policy </Text>, ensuring
-            your information is protected.
-          </Text>
-          <View className="mt-3 flex flex-row items-center justify-center">
-            <Text className="text-base font-medium">
-              Do not have an Account?
-            </Text>
-            <Link
-              href="/signup"
-              className="ml-1 text-base font-semibold text-[#329600]"
-            >
-              Sign Up
-            </Link>
-          </View>
-        </View>
       </ScrollView>
+      <View className="android:px-5 ios:px-px absolute bottom-10 text-[#888888]">
+        <Text className="text-center text-[#888888]">
+          By signing up, you agree to our{' '}
+          <Text className="text-[#329600]">Terms of Service</Text> and{' '}
+          <Text className="text-[#329600]"> Privacy Policy </Text>, ensuring
+          your information is protected.
+        </Text>
+        <View className="mt-3 flex flex-row items-center justify-center">
+          <Text className="text-base font-medium">Do not have an Account?</Text>
+          <Link
+            href="/signup"
+            className="ml-1 text-base font-semibold text-[#329600]"
+          >
+            Sign Up
+          </Link>
+        </View>
+      </View>
     </KeyboardAwareScrollView>
   )
 }
