@@ -1,15 +1,24 @@
-import { Link, useRouter } from 'expo-router'
-import { Image, ScrollView, Text, View } from 'moti'
+import { Link, useLocalSearchParams, usePathname, useRouter } from 'expo-router'
+import { AnimatePresence, Image, Text, View } from 'moti'
 import useDataStore from '../store/data.store'
+import { Dimensions, Pressable, TouchableOpacity } from 'react-native'
 import {
-  KeyboardAvoidingView,
-  Platform,
-  Pressable,
-  TouchableOpacity,
-} from 'react-native'
-import { Check, Plus, X } from 'lucide-react-native'
+  Actionsheet,
+  ActionsheetContent,
+  ActionsheetDragIndicator,
+  ActionsheetDragIndicatorWrapper,
+  ActionsheetBackdrop,
+  ActionsheetFlatList,
+} from '@/components/ui/actionsheet'
+import { Check, Plus, Search, X } from 'lucide-react-native'
 import { cn } from '../lib/utils'
 import Loader from './loader'
+import { useEffect, useState } from 'react'
+import UserCard from './user-card'
+import { User } from '../store/auth.store'
+import { Input, InputField } from './ui/input'
+import { useDebounceValue } from 'usehooks-ts'
+import { Skeleton } from './ui/skeleton'
 
 export default function Transfers({
   className,
@@ -20,54 +29,104 @@ export default function Transfers({
   title?: string
   isUserSelectable?: boolean
 }) {
-  const { transfers, setSelectedUser, selectedUser, isLoading, users } =
-    useDataStore()
+  const {
+    setSelectedUser,
+    isLoading,
+    users,
+    searchUser,
+    transfers,
+    selectedUser,
+  } = useDataStore()
   const { push } = useRouter()
+  const [open, setOpen] = useState(false)
+  const pathName = usePathname()
+  const [searchText, setSearchText] = useState('')
+  const [debouncedValue] = useDebounceValue(searchText, 700)
+  const { userId } = useLocalSearchParams<{ userId: string }>()
+  const isHomePage = pathName === '/' || pathName === '/home'
+  const { height } = Dimensions.get('screen')
+
+  useEffect(() => {
+    if (!!debouncedValue) {
+      searchUser(debouncedValue)
+    } else {
+      searchUser('')
+    }
+  }, [debouncedValue])
 
   return (
     <>
-      {isLoading && (
-        <Loader
-          isFullScreen
-          loaderText="Adding contact..."
-        />
-      )}
       <View className={cn('mt-4 px-3', className)}>
         <View className="mb-2 flex flex-row items-center justify-between">
           <Text className="font-dmSans text-lg font-semibold">{title}</Text>
-          <Link
-            href="/history/all"
-            className="font-dmSans text-sm font-semibold text-[#245C0B]"
-          >
-            View All
-          </Link>
+          {isHomePage ? (
+            <Link
+              href="/history/all"
+              className="font-dmSans text-sm font-semibold text-[#245C0B]"
+            >
+              View All
+            </Link>
+          ) : (
+            <Pressable onPress={() => setOpen(true)}>
+              <Text className="font-dmSans text-sm font-semibold text-[#245C0B]">
+                View All
+              </Text>
+            </Pressable>
+          )}
         </View>
         <View className="flex flex-row items-center justify-between rounded-xl bg-white px-3 py-3">
-          {users.slice(0, 4).map((user, index) => (
-            <TouchableOpacity
-              onPress={() => {
-                isUserSelectable ? setSelectedUser(user) : null
-              }}
-              key={user.name + '_' + index}
-              className="android:gap-1 ios:gap-2 relative flex flex-col items-center justify-center pt-1 w-16"
-            >
-              <Image
-                className="size-12 rounded-xl"
-                source={{ uri: user.avatar }}
-              />
-              <Text className="text-center font-dmSans text-xs font-medium leading-none">
-                {user.name.split(' ')[0]}
-              </Text>
-              {selectedUser?.name === user.name ? (
-                <View className="absolute right-0 top-0 rounded-full bg-green-700">
-                  <Check
-                    size={10}
-                    color="#ffffff"
-                  />
-                </View>
-              ) : null}
-            </TouchableOpacity>
-          ))}
+          {users?.length === 0 ? (
+            <>
+              <Skeleton className="android:gap-1 ios:gap-2 h-16 rounded-2xl items-center justify-center pt-1 w-16" />
+              <Skeleton className="android:gap-1 ios:gap-2 h-16 rounded-2xl items-center justify-center pt-1 w-16" />
+              <Skeleton className="android:gap-1 ios:gap-2 h-16 rounded-2xl items-center justify-center pt-1 w-16" />
+              <Skeleton className="android:gap-1 ios:gap-2 h-16 rounded-2xl items-center justify-center pt-1 w-16" />
+            </>
+          ) : (
+            <>
+              {transfers.slice(0, 4).map((transfer, index) => (
+                <TouchableOpacity
+                  key={transfer.transactionId + '_' + index}
+                  onPress={() => {
+                    if (isUserSelectable) {
+                      setSelectedUser(transfer.user)
+                    } else {
+                      push(`/send-money?userId=${transfer.user.id}`)
+                    }
+                  }}
+                >
+                  <View
+                    from={{ scale: 0.8 }}
+                    animate={{
+                      scale: 1,
+                    }}
+                    transition={{
+                      type: 'spring',
+                      duration: 800,
+                      delay: index * 100,
+                    }}
+                    className="android:gap-1 ios:gap-2 relative flex flex-col items-center justify-center pt-1 w-16"
+                  >
+                    <Image
+                      className="size-12 rounded-xl"
+                      source={{ uri: transfer.user.avatar }}
+                    />
+                    <Text className="text-center font-dmSans text-xs font-medium leading-none">
+                      {transfer.user.name.split(' ')[0]}
+                    </Text>
+                    {selectedUser?.id === transfer.user.id ? (
+                      <View className="absolute right-1 top-0 rounded-full bg-green-700">
+                        <Check
+                          size={14}
+                          color="#ffffff"
+                        />
+                      </View>
+                    ) : null}
+                  </View>
+                </TouchableOpacity>
+              ))}
+            </>
+          )}
 
           {/* <View className="h-16 w-px bg-gray-300" /> */}
           <TouchableOpacity
@@ -84,53 +143,82 @@ export default function Transfers({
               Add new
             </Text>
           </TouchableOpacity>
-
-          {/* <AlertDialog open={dialogOpen} onOpenChange={setDialogOpen}>
-            <AlertDialogTrigger asChild>
-              <TouchableOpacity className="flex flex-col items-center justify-center gap-2">
-                <View className="android:size-11 ios:size-12 flex items-center justify-center rounded-full bg-gray-200">
-                  <Plus size={30} color="#329600" />
-                </View>
-                <Text className="text-center font-dmSans text-xs font-medium leading-none">
-                  Add new
-                </Text>
-              </TouchableOpacity>
-            </AlertDialogTrigger>
-            <AlertDialogContent
-              overlayClassName="justify-end bottom-0 pb-5 px-0 py-0 w-full"
-              className="rounded-3xl px-0 py-0">
-              <AlertDialogHeader className="mt-0 flex flex-row items-center justify-between border-b border-[#E7E7E7] px-5 py-4">
-                <AlertDialogTitle>Add new contact</AlertDialogTitle>
-                <AlertDialogCancel className="h-5 border-0 p-0 shadow-none">
-                  <X size={20} />
-                </AlertDialogCancel>
-              </AlertDialogHeader>
-              <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-                <View className="block w-screen gap-2 px-5 pb-10">
-                  <View className="gap-2">
-                    <Label>Contact Name</Label>
-                    <Input placeholder="Enter full name" className="w-full" />
-                  </View>
-                  <View className="gap-2">
-                    <Label>Contact Name</Label>
-                    <Input
-                      placeholder="Number"
-                      inputMode="numeric"
-                      keyboardType="number-pad"
-                      className="w-full"
-                    />
-                  </View>
-                  <Button
-                    onPress={() => handleAddContact()}
-                    title="Add Contact"
-                    className="w-full"
-                  />
-                </View>
-              </KeyboardAvoidingView>
-            </AlertDialogContent>
-          </AlertDialog> */}
         </View>
       </View>
+      <Actionsheet
+        isOpen={open}
+        onClose={() => setOpen(false)}
+      >
+        <ActionsheetBackdrop />
+        <ActionsheetContent>
+          <ActionsheetDragIndicatorWrapper>
+            <ActionsheetDragIndicator />
+          </ActionsheetDragIndicatorWrapper>
+          <View className="py-2 w-full flex flex-row justify-between items-center">
+            <Text className="text-lg font-semibold text-[#3D3D3D]">
+              Contacts
+            </Text>
+            <TouchableOpacity
+              onPress={() => {
+                setOpen(false)
+                setSearchText('')
+              }}
+            >
+              <X
+                size={22}
+                color="#3D3D3D"
+              />
+            </TouchableOpacity>
+          </View>
+          <View className="mt-2 flex h-14 w-full flex-row items-center overflow-hidden rounded-full border border-[#E7E7E7] bg-white py-2 pl-5">
+            <Search
+              size={18}
+              color="#667085"
+            />
+            <Input className="h-full w-full border-0 p-0 pl-1 shadow-none">
+              <InputField
+                placeholder="Search By"
+                value={searchText}
+                onChangeText={setSearchText}
+              />
+            </Input>
+          </View>
+          {isLoading ? (
+            <View style={{ height: height * 0.6 }}>
+              <Loader
+                className="h-full flex flex-col justify-center items-center"
+                loaderText="Adding contact..."
+              />
+            </View>
+          ) : (
+            <AnimatePresence>
+              <ActionsheetFlatList
+                className="mt-1 h-3/5"
+                data={users}
+                contentContainerStyle={{
+                  paddingBottom: 20,
+                }}
+                showsVerticalScrollIndicator={false}
+                renderItem={({ item, index }) => (
+                  <UserCard
+                    user={item as User}
+                    index={index}
+                    onClick={() => setOpen(false)}
+                  />
+                )}
+                keyExtractor={(item, index) =>
+                  (item as User).id || `user-${index}`
+                }
+                ListEmptyComponent={
+                  <View className="w-full py-10 h-96 flex flex-col justify-center items-center">
+                    <Text className="text-lg text-center">No user found</Text>
+                  </View>
+                }
+              />
+            </AnimatePresence>
+          )}
+        </ActionsheetContent>
+      </Actionsheet>
     </>
   )
 }

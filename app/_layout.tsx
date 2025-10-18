@@ -96,7 +96,10 @@ function RootLayoutNav() {
                     name="(show-data)"
                     options={{ headerShown: false }}
                   />
-
+                  <Stack.Screen
+                    name="send-money"
+                    options={{ headerShown: false }}
+                  />
                   <Stack.Screen
                     name="add-user"
                     options={{

@@ -40,12 +40,12 @@ export default function RootHistoryLayout() {
     <View className="flex-1 px-3 android:mt-3">
       <Header title="History" />
       <View className="h-5" />
-      <View className="mb-3 flex h-11 w-full flex-row items-center overflow-hidden rounded-full border border-[#E7E7E7] bg-white py-2 pl-3">
+      <View className="mb-3 flex h-14 w-full flex-row items-center overflow-hidden rounded-full border border-[#E7E7E7] bg-white py-2 pl-5">
         <Search
           size={18}
           color="#667085"
         />
-        <Input className="h-10 w-full border-0 p-0 pl-1 shadow-none">
+        <Input className="h-full w-full border-0 p-0 pl-1 shadow-none">
           <InputField
             placeholder="Search By"
             value={searchText}

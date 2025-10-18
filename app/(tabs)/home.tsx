@@ -16,7 +16,7 @@ export default function HoomeScreen() {
     <View className="h-screen bg-gray-200">
       <View
         style={{ marginTop: top }}
-        className="andriod:pt-5 ios:pt-1 flex-row items-center justify-between px-3"
+        className="andriod:pt-5 ios:pb-3 flex-row items-center justify-between px-3"
       >
         <View className="h-12 min-w-36 flex-row items-center justify-between gap-3 rounded-full bg-white p-1">
           <Image

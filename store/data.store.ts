@@ -30,6 +30,7 @@ interface DataStore {
   addTransfer: (transfer: Transfer) => void
   deleteTransfer: (transactionId: string) => void
   searchTransaction: (query: string) => void
+  searchUser: (query: string) => void
   refillDB: () => void
   isLoading: Boolean
   error: string | null
@@ -87,7 +88,8 @@ const useDataStore = create<DataStore>((set, get) => ({
       }))
     }
   },
-  setSelectedUser: (user) => set(() => ({ selectedUser: user })),
+  setSelectedUser: (user) =>
+    set((state) => ({ ...state, selectedUser: user, isLoading: false })),
   deleteUser: async (userId) => {
     try {
       const users = get().users
@@ -135,6 +137,7 @@ const useDataStore = create<DataStore>((set, get) => ({
     } catch (error) {
       console.log(error)
       set({
+        isLoading: false,
         error: error instanceof Error ? error.message : 'Add user failed',
       })
     }
@@ -203,6 +206,20 @@ const useDataStore = create<DataStore>((set, get) => ({
         error: error instanceof Error ? error.message : 'Add transfer failed',
       })
     }
+  },
+  searchUser: async (query) => {
+    set((state) => ({ ...state, isLoading: true }))
+
+    await new Promise((resolve) => setTimeout(resolve, 500))
+
+    set((state) => ({
+      users: query.length
+        ? state.users.filter((user) =>
+            user.name.toLowerCase().includes(query.toLowerCase()),
+          )
+        : initialUsers,
+      isLoading: false,
+    }))
   },
   searchTransaction: async (query) => {
     set((state) => ({ ...state, isLoading: true }))
