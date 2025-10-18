@@ -85,32 +85,59 @@ export default function ActionButtons() {
   const [isMoreOptionOpen, setIsMoreOptionOpen] = useState(false)
   return (
     <View className="flex flex-row items-center justify-between gap-2 mt-4 px-3">
-      {options.map((option) => (
-        <TouchableOpacity
-          onPress={() => navigate(option.href as any)}
+      {options.map((option, index) => (
+        <View
           key={option.name}
+          from={{ translateY: 20, scale: 0.8, opacity: 0 }}
+          animate={{
+            scale: 1,
+            opacity: 1,
+            translateY: 0,
+          }}
+          transition={{
+            type: 'timing',
+            duration: index * 100 + 300,
+            delay: index * 100,
+          }}
+        >
+          <TouchableOpacity
+            onPress={() => navigate(option.href as any)}
+            className="flex h-[72px] w-[72px] flex-col items-center justify-center gap-2 rounded-xl bg-white"
+          >
+            <option.icon
+              size={24}
+              color="#329600"
+            />
+            <Text className="text-xs font-medium text-[#3D3D3D]">
+              {option.name}
+            </Text>
+          </TouchableOpacity>
+        </View>
+      ))}
+      <View
+        from={{ translateY: 20, scale: 0.8, opacity: 0 }}
+        animate={{
+          scale: 1,
+          opacity: 1,
+          translateY: 0,
+        }}
+        transition={{
+          type: 'timing',
+          duration: 3 * 100 + 300,
+          delay: 3 * 100,
+        }}
+      >
+        <TouchableOpacity
+          onPress={() => setIsMoreOptionOpen(true)}
           className="flex h-[72px] w-[72px] flex-col items-center justify-center gap-2 rounded-xl bg-white"
         >
-          <option.icon
+          <Grip
             size={24}
             color="#329600"
           />
-          <Text className="text-xs font-medium text-[#3D3D3D]">
-            {option.name}
-          </Text>
+          <Text className="text-xs font-medium text-[#3D3D3D]">More</Text>
         </TouchableOpacity>
-      ))}
-
-      <TouchableOpacity
-        onPress={() => setIsMoreOptionOpen(true)}
-        className="flex h-[72px] w-[72px] flex-col items-center justify-center gap-2 rounded-xl bg-white"
-      >
-        <Grip
-          size={24}
-          color="#329600"
-        />
-        <Text className="text-xs font-medium text-[#3D3D3D]">More</Text>
-      </TouchableOpacity>
+      </View>
       <Actionsheet
         isOpen={isMoreOptionOpen}
         onClose={() => setIsMoreOptionOpen(false)}

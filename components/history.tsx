@@ -1,10 +1,10 @@
-import { Image, Text } from 'moti'
+import { Image, Text, View } from 'moti'
 import useDataStore from '../store/data.store'
 import Loader from './loader'
-import { View } from './Themed'
 import dayjs from 'dayjs'
 import { cn } from '../lib/utils'
 import { FlatList } from 'react-native'
+import { LinearTransition } from 'react-native-reanimated'
 
 export default function History({
   transactionType,
@@ -32,6 +32,27 @@ export default function History({
         }
         renderItem={({ item, index }) => (
           <View
+            layout={LinearTransition.springify().damping(40).stiffness(400)}
+            from={{
+              opacity: 0,
+              translateY: 50,
+              scale: 0.9,
+            }}
+            animate={{
+              opacity: 1,
+              translateY: 0,
+              scale: 1,
+            }}
+            transition={{
+              type: index !== 0 ? 'timing' : 'spring',
+              duration: 600,
+              delay: index * 100,
+            }}
+            exit={{
+              translateX: 300,
+              opacity: 0,
+              scale: 0.8,
+            }}
             key={item.transactionId}
             className={cn(
               'flex flex-row items-center justify-between',

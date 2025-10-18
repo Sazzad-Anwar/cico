@@ -32,15 +32,6 @@ export default function SendMoneyScreen() {
     }
   }, [user])
 
-  //   if (isLoading) {
-  //     return (
-  //       <Loader
-  //         isFullScreen
-  //         loaderText="Loading ..."
-  //       />
-  //     )
-  //   }
-
   return (
     <View className="relative flex-1">
       <Header
@@ -49,7 +40,7 @@ export default function SendMoneyScreen() {
       />
 
       <Transfers
-        title="Recent Transfers"
+        title="Recent Contacts"
         isUserSelectable={true}
       />
 

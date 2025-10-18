@@ -2,6 +2,7 @@ import { Link } from 'expo-router'
 import { Image, ScrollView, Text, View } from 'moti'
 import useDataStore from '../store/data.store'
 import dayjs from 'dayjs'
+import { LinearTransition } from 'react-native-reanimated'
 
 export default function Transactions({
   title = 'Transactions',
@@ -28,6 +29,27 @@ export default function Transactions({
         <View className="mt-3 gap-3 rounded-xl bg-white p-3">
           {transfers.slice(0, 4).map((transfer, index) => (
             <View
+              layout={LinearTransition.springify().damping(40).stiffness(400)}
+              from={{
+                opacity: 0,
+                translateY: 50,
+                scale: 0.9,
+              }}
+              animate={{
+                opacity: 1,
+                translateY: 0,
+                scale: 1,
+              }}
+              transition={{
+                type: index !== 0 ? 'timing' : 'spring',
+                duration: 600,
+                delay: index * 100,
+              }}
+              exit={{
+                translateX: 300,
+                opacity: 0,
+                scale: 0.8,
+              }}
               key={transfer.user.name + '_' + index}
               className="flex flex-row items-center justify-between"
             >

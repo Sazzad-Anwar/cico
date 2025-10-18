@@ -107,6 +107,12 @@ function RootLayoutNav() {
                       presentation: 'containedModal',
                     }}
                   />
+                  <Stack.Screen
+                    name="top-up"
+                    options={{
+                      headerShown: false,
+                    }}
+                  />
                 </Stack.Protected>
               </Stack>
             </KeyboardProvider>
