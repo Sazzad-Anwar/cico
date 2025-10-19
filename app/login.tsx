@@ -40,7 +40,7 @@ export default function LoginScreen() {
     },
   })
   const { top } = useSafeAreaInsets()
-  const { push } = useRouter()
+  const { navigate } = useRouter()
   const { isLoading, login, isAuthenticated, error, clearError } =
     useAuthStore()
 
@@ -75,7 +75,7 @@ export default function LoginScreen() {
       }
       await login(data)
       if (isAuthenticated) {
-        push('/home')
+        navigate('/home')
       }
     } catch (error: any) {
       console.log(error.message)

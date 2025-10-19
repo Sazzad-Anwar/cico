@@ -116,7 +116,7 @@ export default function SettingsScreen() {
       </TouchableOpacity>
 
       <TouchableOpacity
-        onPress={() => router.push('/(show-data)/users')}
+        onPress={() => router.navigate('/(show-data)/users')}
         className="mt-5 flex flex-row items-center justify-between rounded-xl bg-white py-2 pl-2 pr-3"
       >
         <View className="flex flex-row items-center gap-2">
@@ -134,7 +134,7 @@ export default function SettingsScreen() {
       <TouchableOpacity
         onPress={() => {
           refillDB()
-          router.push('/(show-data)/users')
+          router.navigate('/(show-data)/users')
         }}
         className="mt-5 flex flex-row items-center justify-between rounded-xl bg-white py-2 pl-2 pr-3"
       >
@@ -153,7 +153,7 @@ export default function SettingsScreen() {
       <TouchableOpacity
         onPress={() => {
           deleteLoginData()
-          router.push('/login')
+          router.navigate('/login')
         }}
         className="mt-5 flex flex-row items-center justify-between rounded-xl bg-white py-2 pl-2 pr-3"
       >
@@ -177,7 +177,7 @@ export default function SettingsScreen() {
       <TouchableOpacity
         onPress={() => {
           logout()
-          router.push('/login')
+          router.navigate('/login')
         }}
         className="mt-5 flex flex-row items-center justify-between rounded-xl bg-white py-2 pl-2 pr-3"
       >

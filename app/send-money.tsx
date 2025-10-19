@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react'
 import { Pressable } from 'react-native'
 import { cn } from '../lib/utils'
 import { Input, InputField } from '../components/ui/input'
-import useAuthStore from '../store/auth.store'
+import useAuthStore, { User } from '../store/auth.store'
 import Button from '../components/custom-button'
 import Loader from '../components/loader'
 
@@ -17,15 +17,15 @@ export default function SendMoneyScreen() {
   const { user } = useAuthStore()
   const [amount, setAmount] = useState(100)
   const [selectedTab, setSelectedTab] = useState('USD')
-  const { userId } = useLocalSearchParams<{ userId: string }>()
+  const { user: paramsUser } = useLocalSearchParams<{ user: string }>()
 
   useEffect(() => {
-    if (userId) {
-      const user = users.find((u) => u.id === userId)
-      console.log({ user, userId })
-      if (user) {
-        setSelectedUser(user)
-      }
+    if (paramsUser) {
+      const selectedUser = JSON.parse(paramsUser) as User
+      const foundUser = users.find(
+        (u) => u.email === selectedUser.email,
+      ) as User
+      setSelectedUser(foundUser)
     }
     return () => {
       setSelectedUser(null)
@@ -46,7 +46,7 @@ export default function SendMoneyScreen() {
 
       <View className="my-3 px-4">
         <Text className="mb-3 font-inter font-medium leading-[20px] text-base text-[#121212]">
-          Enter Amount 2
+          Enter Amount
         </Text>
         <View className="bg-white rounded-2xl p-5">
           <View className="flex flex-row relative justify-between items-center bg-gray-100 w-32 mx-auto p-1.5 rounded-full">
@@ -80,7 +80,7 @@ export default function SendMoneyScreen() {
             </Pressable>
           </View>
           <View className="my-7 flex flex-row items-center justify-center gap-1 w-32 mx-auto">
-            <Text className="text-2xl font-semibold font-dmSans leading-[24px] text-button ios:mt-2">
+            <Text className="text-2xl font-semibold font-dmSans leading-[24px] text-button ios:mt-1">
               {selectedTab === 'USD' ? '$' : 'ETB'}
             </Text>
             <Input className="w-11/12 mx-auto ml-0 border-0">

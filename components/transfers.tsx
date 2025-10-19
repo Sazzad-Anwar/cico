@@ -42,7 +42,9 @@ export default function Transfers({
   const pathName = usePathname()
   const [searchText, setSearchText] = useState('')
   const [debouncedValue] = useDebounceValue(searchText, 700)
-  const { userId } = useLocalSearchParams<{ userId: string }>()
+  const { isUserDialogueOpen } = useLocalSearchParams<{
+    isUserDialogueOpen: string
+  }>()
   const isHomePage = pathName === '/' || pathName === '/home'
   const { height } = Dimensions.get('screen')
 
@@ -53,6 +55,14 @@ export default function Transfers({
       searchUser('')
     }
   }, [debouncedValue])
+
+  useEffect(() => {
+    if (isUserDialogueOpen === 'true') {
+      setTimeout(() => {
+        setOpen(true)
+      }, 1000)
+    }
+  }, [])
 
   return (
     <>
@@ -91,7 +101,10 @@ export default function Transfers({
                     if (isUserSelectable) {
                       setSelectedUser(transfer.user)
                     } else {
-                      push(`/send-money?userId=${transfer.user.id}`)
+                      push({
+                        pathname: `/send-money`,
+                        params: { user: JSON.stringify(transfer.user) },
+                      })
                     }
                   }}
                 >
@@ -114,7 +127,7 @@ export default function Transfers({
                     <Text className="text-center font-dmSans text-xs font-medium leading-none">
                       {transfer.user.name.split(' ')[0]}
                     </Text>
-                    {selectedUser?.id === transfer.user.id ? (
+                    {selectedUser?.email === transfer.user.email ? (
                       <View className="absolute right-1 top-0 rounded-full bg-green-700">
                         <Check
                           size={14}

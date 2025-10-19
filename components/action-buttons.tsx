@@ -1,16 +1,14 @@
-import { useRouter } from 'expo-router'
+import { Href, Link, useRouter } from 'expo-router'
 import { CornerUpRight, Grip, Plus, ReceiptText, X } from 'lucide-react-native'
 import {
   Actionsheet,
   ActionsheetContent,
-  ActionsheetItem,
-  ActionsheetItemText,
   ActionsheetDragIndicator,
   ActionsheetDragIndicatorWrapper,
   ActionsheetBackdrop,
 } from '@/components/ui/actionsheet'
 
-import { Image, ScrollView, Text, View } from 'moti'
+import { Image, Text, View } from 'moti'
 import { useState } from 'react'
 import { TouchableOpacity } from 'react-native'
 
@@ -18,17 +16,17 @@ const options = [
   {
     name: 'Top Up',
     icon: Plus,
-    href: '/top-up',
+    href: '/top-up' as Href,
   },
   {
     name: 'Transfer',
     icon: CornerUpRight,
-    href: '/transfer',
+    href: '/transfer' as Href,
   },
   {
     name: 'Bill Pay',
     icon: ReceiptText,
-    href: '/paybills',
+    href: '/paybills' as Href,
   },
 ]
 
@@ -36,47 +34,47 @@ const moreOptions = [
   {
     name: 'Send money',
     image: require('../assets/images/send-money-icon.png'),
-    href: '/send-money',
+    href: '/send-money' as Href,
   },
   {
     name: 'Recharge',
     image: require('../assets/images/mobile-icon.png'),
-    href: '/recharge',
+    href: '/recharge' as Href,
   },
   {
     name: 'Cash out',
     image: require('../assets/images/cash-out-icon.png'),
-    href: '/cash-out',
+    href: '/cash-out' as Href,
   },
   {
     name: 'Payment',
     image: require('../assets/images/payment-icon.png'),
-    href: '/payment',
+    href: '/payment' as Href,
   },
   {
     name: 'Savings',
     image: require('../assets/images/savings-icon.png'),
-    href: '/savings',
+    href: '/savings' as Href,
   },
   {
     name: 'Insurance',
     image: require('../assets/images/insurance-icon.png'),
-    href: '/insurance',
+    href: '/insurance' as Href,
   },
   {
     name: 'Merchant',
     image: require('../assets/images/marchant-icon.png'),
-    href: '/merchant',
+    href: '/merchant' as Href,
   },
   {
     name: 'Donation',
     image: require('../assets/images/donation-icon.png'),
-    href: '/donation',
+    href: '/donation' as Href,
   },
   {
     name: 'Wallet to bank',
     image: require('../assets/images/wallet-to-bank-icon.png'),
-    href: '/wallet-to-bank',
+    href: '/wallet-to-bank' as Href,
   },
 ]
 
@@ -163,8 +161,8 @@ export default function ActionButtons() {
               <TouchableOpacity
                 key={option.image}
                 onPress={() => {
+                  navigate(option.href)
                   setIsMoreOptionOpen(false)
-                  navigate(option.href as any)
                 }}
                 className="flex h-20 w-20 flex-col items-center justify-center gap-3"
               >

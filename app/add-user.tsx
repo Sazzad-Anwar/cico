@@ -38,9 +38,9 @@ export default function AddUserScreen() {
       kebeleId: '',
     },
   })
-  const { push, back } = useRouter()
+  const { push, navigate, dismissTo } = useRouter()
 
-  const handleSubmit = (data: Partial<User>) => {
+  const handleSubmit = async (data: Partial<User>) => {
     try {
       addUser({
         id: data.id || uuid.v4().toString(),
@@ -57,10 +57,19 @@ export default function AddUserScreen() {
           { type: 'USD', amount: Math.random() * 1000 },
         ],
       })
-      back()
+      push('/send-money')
     } catch (error) {
       console.error(error)
     }
+  }
+
+  if (isLoading) {
+    return (
+      <Loader
+        isFullScreen
+        loaderText="Adding user..."
+      />
+    )
   }
 
   return (
