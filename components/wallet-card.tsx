@@ -121,7 +121,7 @@ function AnimatedWalletCard({
     user?.deposit?.find((item) => item.type === type)?.amount?.toFixed(2)
 
   return (
-    <View className="relative h-[250px]">
+    <View className="relative h-[250px] android:mt-4">
       <Image
         style={{
           resizeMode: Platform.OS === 'ios' ? 'cover' : 'contain',
@@ -146,7 +146,7 @@ function AnimatedWalletCard({
           type: 'spring',
           duration: 400,
         }}
-        className="absolute h-[178px] ios:px-3 android:px-4 z-30 left-0 right-0 backdrop-blur-md overflow-hidden rounded-3xl"
+        className="absolute h-[178px] ios:px-3 android:px-2 z-30 left-0 right-0 backdrop-blur-md overflow-hidden rounded-3xl"
       >
         <ImageBackground
           className="h-full w-full flex flex-row justify-between p-4"
@@ -177,7 +177,7 @@ function AnimatedWalletCard({
           type: 'spring',
           duration: 400,
         }}
-        className="absolute h-[178px] w-full ios:px-3 android:px-4 z-20 left-0 right-0 rounded-3xl backdrop-blur-md"
+        className="absolute h-[178px] w-full ios:px-3 android:px-2 z-20 left-0 right-0 rounded-3xl backdrop-blur-md"
       >
         <ImageBackground
           className="h-full w-full flex flex-row justify-between p-4"
@@ -194,7 +194,7 @@ function AnimatedWalletCard({
         style={{
           resizeMode: Platform.OS === 'ios' ? 'cover' : 'contain',
         }}
-        className="absolute h-[250px] w-full z-10 left-0 right-0 ios:top-8 bottom-0"
+        className="absolute h-[250px] w-full z-10 left-0 right-0 ios:top-0 bottom-0 android:bottom-2"
         source={require('@/assets/images/wallet-cover-back.png')}
       />
     </View>

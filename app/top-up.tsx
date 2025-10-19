@@ -97,7 +97,7 @@ export default function TopUpScreen() {
             </Pressable>
           </View>
           <View className="my-7 flex flex-row items-center justify-center gap-1 w-32 mx-auto">
-            <Text className="text-3xl font-semibold font-dmSans leading-[24px] text-button ios:mt-2">
+            <Text className="text-2xl font-semibold font-dmSans leading-[24px] text-button ios:mt-2">
               {selectedTab === 'USD' ? '$' : 'ETB'}
             </Text>
             <Input className="w-11/12 mx-auto ml-0 border-0">
