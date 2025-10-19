@@ -46,7 +46,7 @@ export default function SendMoneyScreen() {
 
       <View className="my-3 px-4">
         <Text className="mb-3 font-inter font-medium leading-[20px] text-base text-[#121212]">
-          Enter Amount
+          Enter Amount 1
         </Text>
         <View className="bg-white rounded-2xl p-5">
           <View className="flex flex-row relative justify-between items-center bg-gray-100 w-32 mx-auto p-1.5 rounded-full">
