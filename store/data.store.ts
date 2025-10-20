@@ -43,15 +43,23 @@ const loadUsers = async (): Promise<{
   try {
     const usersData = await AsyncStorage.getItem('users')
     const transfers = await AsyncStorage.getItem('transfers')
-    if (usersData && transfers) {
-      return { users: JSON.parse(usersData), transfers: JSON.parse(transfers) }
-    } else {
-      await AsyncStorage.setItem('users', JSON.stringify(initialUsers))
-      await AsyncStorage.setItem('transfers', JSON.stringify(initialTransfers))
-      return {
-        users: initialUsers,
-        transfers: initialTransfers,
-      }
+    // if (usersData && transfers) {
+    //   return { users: JSON.parse(usersData), transfers: JSON.parse(transfers) }
+    // } else {
+    //   await AsyncStorage.setItem('users', JSON.stringify(initialUsers))
+    //   await AsyncStorage.setItem('transfers', JSON.stringify(initialTransfers))
+    //   return {
+    //     users: initialUsers,
+    //     transfers: initialTransfers.sort((a, b) =>
+    //       dayjs(b.date).isBefore(dayjs(a.date)) ? 1 : -1,
+    //     ),
+    //   }
+    // }
+    return {
+      users: JSON.parse(usersData || '[]'),
+      transfers: (JSON.parse(transfers || '[]') as Transfer[]).sort((a, b) =>
+        dayjs(b.date).isBefore(dayjs(a.date)) ? 1 : -1,
+      ),
     }
   } catch (error) {
     console.log(error)
@@ -188,18 +196,20 @@ const useDataStore = create<DataStore>((set, get) => ({
     }
   },
   addTransfer: async (transfer) => {
+    set((state) => ({ ...state, isLoading: true, error: null }))
+    await new Promise((resolve) => setTimeout(resolve, 1000))
     try {
-      const newTransfer = {
-        ...transfer,
-        transactionId: transfer.transactionId || `TXN_${Date.now()}`,
-        date: transfer.date || dayjs().format('YYYY-MM-DD HH:mm:ss'),
-      }
-      set((state) => ({
-        transfers: [newTransfer, ...state.transfers],
-        transfer: newTransfer,
-      }))
+      const transfers = [...get().transfers, transfer].sort((a, b) =>
+        dayjs(b.date).isBefore(dayjs(a.date)) ? 1 : -1,
+      )
 
-      await AsyncStorage.setItem('transfers', JSON.stringify(get().transfers))
+      await AsyncStorage.setItem('transfers', JSON.stringify(transfers))
+      set((state) => ({
+        ...state,
+        transfers,
+        transfer,
+        isLoading: false,
+      }))
     } catch (error) {
       console.log(error)
       set({

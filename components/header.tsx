@@ -24,7 +24,9 @@ export default function Header({
       >
         <ArrowLeft size={20} />
       </TouchableOpacity>
-      <Text className="font-dmSans text-xl font-semibold">{title}</Text>
+      <Text className="font-dmSans text-xl font-semibold capitalize">
+        {title}
+      </Text>
       <View className="size-10" />
     </View>
   )

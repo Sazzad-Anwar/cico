@@ -85,61 +85,64 @@ export default function Transfers({
           )}
         </View>
         <View className="flex flex-row items-center justify-between rounded-xl bg-white px-3 py-3">
-          {users?.length === 0 ? (
-            <>
-              <Skeleton className="android:gap-1 ios:gap-2 h-16 rounded-2xl items-center justify-center pt-1 w-16" />
-              <Skeleton className="android:gap-1 ios:gap-2 h-16 rounded-2xl items-center justify-center pt-1 w-16" />
-              <Skeleton className="android:gap-1 ios:gap-2 h-16 rounded-2xl items-center justify-center pt-1 w-16" />
-              <Skeleton className="android:gap-1 ios:gap-2 h-16 rounded-2xl items-center justify-center pt-1 w-16" />
-            </>
-          ) : (
-            <>
-              {transfers.slice(0, 4).map((transfer, index) => (
-                <TouchableOpacity
-                  key={transfer.transactionId + '_' + index}
-                  onPress={() => {
-                    if (isUserSelectable) {
-                      setSelectedUser(transfer.user)
-                    } else {
-                      push({
-                        pathname: `/send-money`,
-                        params: { user: JSON.stringify(transfer.user) },
-                      })
-                    }
-                  }}
-                >
-                  <View
-                    from={{ scale: 0.8 }}
-                    animate={{
-                      scale: 1,
+          <View className="flex flex-row items-center justify-start">
+            {users?.length === 0 ? (
+              <>
+                <Skeleton className="android:gap-1 ios:gap-2 h-16 rounded-2xl items-center justify-center pt-1 w-16" />
+                <Skeleton className="android:gap-1 ios:gap-2 h-16 rounded-2xl items-center justify-center pt-1 w-16" />
+                <Skeleton className="android:gap-1 ios:gap-2 h-16 rounded-2xl items-center justify-center pt-1 w-16" />
+                <Skeleton className="android:gap-1 ios:gap-2 h-16 rounded-2xl items-center justify-center pt-1 w-16" />
+              </>
+            ) : (
+              <>
+                {transfers.slice(0, 4).map((transfer, index) => (
+                  <TouchableOpacity
+                    key={transfer.transactionId + '_' + index}
+                    onPress={() => {
+                      if (isUserSelectable) {
+                        setSelectedUser(transfer.user)
+                      } else {
+                        push({
+                          pathname: `/send-money`,
+                          params: { user: JSON.stringify(transfer.user) },
+                        })
+                      }
                     }}
-                    transition={{
-                      type: 'spring',
-                      duration: 800,
-                      delay: index * 100,
-                    }}
-                    className="android:gap-1 ios:gap-2 relative flex flex-col items-center justify-center pt-1 w-16"
+                    className="px-2"
                   >
-                    <Image
-                      className="size-12 rounded-xl"
-                      source={{ uri: transfer.user.avatar }}
-                    />
-                    <Text className="text-center font-dmSans text-xs font-medium leading-none">
-                      {transfer.user.name.split(' ')[0]}
-                    </Text>
-                    {selectedUser?.email === transfer.user.email ? (
-                      <View className="absolute right-1 top-0 rounded-full bg-green-700">
-                        <Check
-                          size={14}
-                          color="#ffffff"
-                        />
-                      </View>
-                    ) : null}
-                  </View>
-                </TouchableOpacity>
-              ))}
-            </>
-          )}
+                    <View
+                      from={{ scale: 0.8 }}
+                      animate={{
+                        scale: 1,
+                      }}
+                      transition={{
+                        type: 'spring',
+                        duration: 800,
+                        delay: index * 100,
+                      }}
+                      className="android:gap-1 ios:gap-2 relative flex flex-col items-center justify-center pt-1 w-16"
+                    >
+                      <Image
+                        className="size-12 rounded-xl"
+                        source={{ uri: transfer.user.avatar }}
+                      />
+                      <Text className="text-center font-dmSans text-xs font-medium leading-none">
+                        {transfer.user.name.split(' ')[0]}
+                      </Text>
+                      {selectedUser?.email === transfer.user.email ? (
+                        <View className="absolute right-1 top-0 rounded-full bg-green-700">
+                          <Check
+                            size={14}
+                            color="#ffffff"
+                          />
+                        </View>
+                      ) : null}
+                    </View>
+                  </TouchableOpacity>
+                ))}
+              </>
+            )}
+          </View>
 
           {/* <View className="h-16 w-px bg-gray-300" /> */}
           <TouchableOpacity
