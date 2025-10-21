@@ -10,7 +10,7 @@ import {
 
 import { Image, Text, View } from 'moti'
 import { useState } from 'react'
-import { TouchableOpacity } from 'react-native'
+import { Alert, TouchableOpacity } from 'react-native'
 
 const options = [
   {
@@ -34,42 +34,34 @@ const moreOptions = [
   {
     name: 'Recharge',
     image: require('../assets/images/mobile-icon.png'),
-    href: '/recharge' as Href,
   },
   {
     name: 'Cash out',
     image: require('../assets/images/cash-out-icon.png'),
-    href: '/cash-out' as Href,
   },
   {
     name: 'Payment',
     image: require('../assets/images/payment-icon.png'),
-    href: '/payment' as Href,
   },
   {
     name: 'Savings',
     image: require('../assets/images/savings-icon.png'),
-    href: '/savings' as Href,
   },
   {
     name: 'Insurance',
     image: require('../assets/images/insurance-icon.png'),
-    href: '/insurance' as Href,
   },
   {
     name: 'Merchant',
     image: require('../assets/images/marchant-icon.png'),
-    href: '/merchant' as Href,
   },
   {
     name: 'Donation',
     image: require('../assets/images/donation-icon.png'),
-    href: '/donation' as Href,
   },
   {
     name: 'Wallet to bank',
     image: require('../assets/images/wallet-to-bank-icon.png'),
-    href: '/wallet-to-bank' as Href,
   },
 ]
 
@@ -152,22 +144,39 @@ export default function ActionButtons() {
             </TouchableOpacity>
           </View>
           <View className="flex mx-auto flex-row flex-wrap items-center justify-between gap-4 px-5 py-3">
-            {moreOptions.map((option) => (
+            {moreOptions.map((option, index) => (
               <TouchableOpacity
                 key={option.image}
                 onPress={() => {
-                  navigate(option.href)
+                  Alert.alert(
+                    'Coming Soon',
+                    `${option.name} feature is coming soon!`,
+                  )
                   setIsMoreOptionOpen(false)
                 }}
-                className="flex h-20 w-20 flex-col items-center justify-center gap-3"
               >
-                <Image
-                  source={option.image}
-                  className="h-auto w-auto"
-                />
-                <Text className="text-center font-dmSans text-[10px] font-light leading-none">
-                  {option.name}
-                </Text>
+                <View
+                  from={{ translateY: 20, scale: 0.8, opacity: 0 }}
+                  animate={{
+                    scale: 1,
+                    opacity: 1,
+                    translateY: 0,
+                  }}
+                  transition={{
+                    type: 'timing',
+                    duration: index * 400,
+                    delay: index * 100,
+                  }}
+                  className="flex h-20 w-20 flex-col items-center justify-center gap-3"
+                >
+                  <Image
+                    source={option.image}
+                    className="h-auto w-auto"
+                  />
+                  <Text className="text-center font-dmSans text-[10px] font-light leading-none">
+                    {option.name}
+                  </Text>
+                </View>
               </TouchableOpacity>
             ))}
             {/* <View className="flex h-16 w-16 flex-col items-center justify-center gap-3" /> */}

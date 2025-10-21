@@ -1,12 +1,12 @@
 import { ScrollView, Text, View } from 'moti'
 import { Image, TouchableOpacity } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import useAuthStore from '../../store/auth.store'
+import useAuthStore from '@/store/auth.store'
 import { Bell } from 'lucide-react-native'
 import WalletCard from '@/components/wallet-card'
-import ActionButtons from '../../components/action-buttons'
-import Transfers from '../../components/transfers'
-import Transactions from '../../components/transactions'
+import ActionButtons from '@/components/action-buttons'
+import Transfers from '@/components/transfers'
+import Transactions from '@/components/transactions'
 
 export default function HoomeScreen() {
   const { top } = useSafeAreaInsets()

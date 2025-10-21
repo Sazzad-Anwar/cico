@@ -25,9 +25,9 @@ export default function Transactions({
         </Link>
       </View>
 
-      <ScrollView>
-        <View className="mt-3 gap-3 rounded-xl bg-white p-3">
-          {transfers.slice(0, 4).map((transfer, index) => (
+      <ScrollView className="h-80 rounded-xl bg-white mt-3">
+        <View className="mt-3 gap-3  p-3">
+          {transfers.slice(0, 10).map((transfer, index) => (
             <View
               layout={LinearTransition.springify().damping(40).stiffness(400)}
               from={{
