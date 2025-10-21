@@ -21,6 +21,7 @@ import {
   ActionsheetBackdrop,
 } from '@/components/ui/actionsheet'
 import { generateTransactionId } from '../lib/data'
+import { useSnackbarContext } from '../components/ui/snackbar'
 
 export default function SendMoneyScreen() {
   const { selectedUser, setSelectedUser, isLoading, users, addTransfer } =
@@ -30,7 +31,8 @@ export default function SendMoneyScreen() {
   const [amount, setAmount] = useState(100)
   const [selectedTab, setSelectedTab] = useState('USD')
   const { user: paramsUser } = useLocalSearchParams<{ user: string }>()
-  const { navigate } = useRouter()
+  const router = useRouter()
+  const snackbar = useSnackbarContext()
 
   useEffect(() => {
     if (paramsUser) {
@@ -44,6 +46,41 @@ export default function SendMoneyScreen() {
       setSelectedUser(null)
     }
   }, [user])
+
+  const handleConfirm = () => {
+    setIsDialogueOpen(false)
+    addTransfer({
+      userId: selectedUser?.id as string,
+      date: new Date().toISOString(),
+      amount,
+      transactionId: generateTransactionId(),
+      type: 'sent',
+      currencyType: selectedTab as 'USD' | 'ETB',
+      user: selectedUser as User,
+    })
+    updateUser({
+      ...user,
+      deposit: user?.deposit?.map((item) => {
+        if (item.type === selectedTab) {
+          return {
+            ...item,
+            amount: item.amount - amount,
+          }
+        }
+        return item
+      }),
+    } as User)
+
+    snackbar.success('Transfer successful!', {
+      position: 'bottom',
+    })
+
+    if (!isLoading) {
+      router.navigate('/transaction-successful')
+    }
+
+    setSelectedUser(null)
+  }
 
   return (
     <View className="relative flex-1">
@@ -219,33 +256,7 @@ export default function SendMoneyScreen() {
             />
             <Button
               title="Confirm"
-              onPress={() => {
-                setIsDialogueOpen(false)
-                addTransfer({
-                  userId: selectedUser?.id as string,
-                  date: new Date().toISOString(),
-                  amount,
-                  transactionId: generateTransactionId(),
-                  type: 'sent',
-                  currencyType: selectedTab as 'USD' | 'ETB',
-                  user: selectedUser as User,
-                })
-                updateUser({
-                  ...user,
-                  deposit: user?.deposit?.map((item) => {
-                    if (item.type === selectedTab) {
-                      return {
-                        ...item,
-                        amount: item.amount - amount,
-                      }
-                    }
-                    return item
-                  }),
-                } as User)
-                if (!isLoading) {
-                  navigate('/transaction-successful')
-                }
-              }}
+              onPress={() => handleConfirm()}
               className="w-[45%]"
             />
           </View>

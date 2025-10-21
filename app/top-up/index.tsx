@@ -11,26 +11,13 @@ import {
   ActionsheetDragIndicator,
   ActionsheetDragIndicatorWrapper,
   ActionsheetBackdrop,
-  ActionsheetScrollView,
 } from '@/components/ui/actionsheet'
 import { X } from 'lucide-react-native'
-import Button from '@/components/custom-button'
-import z from 'zod'
-import { Controller, useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
 import Loader from '@/components/loader'
 import { Stack, useRouter } from 'expo-router'
 
-const CardTopUpSchema = z.object({
-  cardNumber: z.string().min(16, { message: 'Card number must be 16 digits' }),
-  expiryDate: z.string().min(5, { message: 'Expiry date is required' }),
-  cvc: z.string().min(3, { message: 'CVC must be at least 3 digits' }),
-})
-
-type CardTopUpForm = z.infer<typeof CardTopUpSchema>
-
 export default function TopUpScreen() {
-  const { user, updateUser, isLoading } = useAuthStore()
+  const { user, isLoading } = useAuthStore()
   const [amount, setAmount] = useState(100)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [selectedMethod, setSelectedMethod] = useState('')

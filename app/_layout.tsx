@@ -12,10 +12,12 @@ import { useEffect, useState } from 'react'
 import { Stack } from 'expo-router'
 import { KeyboardProvider } from 'react-native-keyboard-controller'
 import useAuthStore from '../store/auth.store'
+import { useAuthInitialization } from '../store/useAuthInitialization'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import useDataStore from '../store/data.store'
 import { SnackbarProvider } from '../components/ui/snackbar'
+import Loader from '../components/loader'
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -47,6 +49,9 @@ function RootLayoutNav() {
   const [colorMode, setColorMode] = useState<'light' | 'dark'>('light')
   const { isAuthenticated, isLoading } = useAuthStore()
   const { loadData } = useDataStore()
+
+  // Initialize authentication state on app start
+  useAuthInitialization()
 
   useEffect(() => {
     loadData()
@@ -117,6 +122,12 @@ function RootLayoutNav() {
                     />
                     <Stack.Screen
                       name="transaction-successful"
+                      options={{
+                        headerShown: false,
+                      }}
+                    />
+                    <Stack.Screen
+                      name="bill-pay"
                       options={{
                         headerShown: false,
                       }}

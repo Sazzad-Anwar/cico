@@ -33,7 +33,7 @@ const creditCardSchema = z.object({
 
 export default function CreditCardInputComponent() {
   const snackbar = useSnackbarContext()
-  const { dismiss } = useRouter()
+  const router = useRouter()
   const { user, updateUser, isLoading } = useAuthStore()
   const { amount, currency } = useLocalSearchParams()
   const {
@@ -68,7 +68,7 @@ export default function CreditCardInputComponent() {
       })
     }
 
-    dismiss()
+    router.back()
   }
 
   return (
@@ -82,7 +82,7 @@ export default function CreditCardInputComponent() {
         className="flex flex-col gap-4"
       />
       <Button
-        title="Add Card"
+        title="Top up"
         onPress={handleSubmit(onSubmit)}
         disabled={!isValid}
         className={`mt-2`}
@@ -113,17 +113,6 @@ export default function CreditCardInputComponent() {
           )}
         </View>
       )}
-
-      <Button
-        title="Toast"
-        onPress={() =>
-          snackbar.success('Toast message!', {
-            duration: 3000,
-            title: 'Success',
-            position: 'bottom',
-          })
-        }
-      />
     </View>
   )
 }

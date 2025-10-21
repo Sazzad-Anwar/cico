@@ -19,23 +19,18 @@ const options = [
     href: '/top-up' as Href,
   },
   {
-    name: 'Transfer',
+    name: 'Send',
     icon: CornerUpRight,
-    href: '/transfer' as Href,
+    href: '/send-money' as Href,
   },
   {
     name: 'Bill Pay',
     icon: ReceiptText,
-    href: '/paybills' as Href,
+    href: '/bill-pay' as Href,
   },
 ]
 
 const moreOptions = [
-  {
-    name: 'Send money',
-    image: require('../assets/images/send-money-icon.png'),
-    href: '/send-money' as Href,
-  },
   {
     name: 'Recharge',
     image: require('../assets/images/mobile-icon.png'),

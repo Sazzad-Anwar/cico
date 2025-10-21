@@ -15,7 +15,7 @@ export const generateTransactionId = () => {
 
 export const initialUsers: User[] = [
   {
-    id: uuid.v4() as string,
+    id: '550e8400-e29b-41d4-a716-446655440001',
     name: 'Annette Warrent',
     email: 'annette.warrent@example.com',
     phoneNumber: '+251911234567',
@@ -30,7 +30,7 @@ export const initialUsers: User[] = [
     ],
   },
   {
-    id: uuid.v4() as string,
+    id: '550e8400-e29b-41d4-a716-446655440002',
     name: 'Devon Walter',
     email: 'devon.walter@example.com',
     phoneNumber: '+251922345678',
@@ -45,7 +45,7 @@ export const initialUsers: User[] = [
     ],
   },
   {
-    id: uuid.v4() as string,
+    id: '550e8400-e29b-41d4-a716-446655440003',
     name: 'Floyd Miles',
     email: 'floyd.miles@example.com',
     phoneNumber: '+251933456789',
@@ -60,7 +60,7 @@ export const initialUsers: User[] = [
     ],
   },
   {
-    id: uuid.v4() as string,
+    id: '550e8400-e29b-41d4-a716-446655440004',
     name: 'Jonathon Michael',
     email: 'jonathon.michael@example.com',
     phoneNumber: '+251944567890',
@@ -75,7 +75,7 @@ export const initialUsers: User[] = [
     ],
   },
   {
-    id: uuid.v4() as string,
+    id: '550e8400-e29b-41d4-a716-446655440005',
     name: 'Sarah Johnson',
     email: 'sarah.johnson@example.com',
     phoneNumber: '+251955678901',
@@ -90,7 +90,7 @@ export const initialUsers: User[] = [
     ],
   },
   {
-    id: uuid.v4() as string,
+    id: '550e8400-e29b-41d4-a716-446655440006',
     name: 'Michael Chen',
     email: 'michael.chen@example.com',
     phoneNumber: '+251966789012',
@@ -105,7 +105,7 @@ export const initialUsers: User[] = [
     ],
   },
   {
-    id: uuid.v4() as string,
+    id: '550e8400-e29b-41d4-a716-446655440007',
     name: 'Emily Rodriguez',
     email: 'emily.rodriguez@example.com',
     phoneNumber: '+251977890123',
@@ -120,7 +120,7 @@ export const initialUsers: User[] = [
     ],
   },
   {
-    id: uuid.v4() as string,
+    id: '550e8400-e29b-41d4-a716-446655440008',
     name: 'David Thompson',
     email: 'david.thompson@example.com',
     phoneNumber: '+251988901234',
@@ -135,7 +135,7 @@ export const initialUsers: User[] = [
     ],
   },
   {
-    id: uuid.v4() as string,
+    id: '550e8400-e29b-41d4-a716-446655440009',
     name: 'Lisa Anderson',
     email: 'lisa.anderson@example.com',
     phoneNumber: '+251999012345',
@@ -150,7 +150,7 @@ export const initialUsers: User[] = [
     ],
   },
   {
-    id: uuid.v4() as string,
+    id: '550e8400-e29b-41d4-a716-446655440010',
     name: 'Robert Wilson',
     email: 'robert.wilson@example.com',
     phoneNumber: '+251900123456',
@@ -165,7 +165,7 @@ export const initialUsers: User[] = [
     ],
   },
   {
-    id: uuid.v4() as string,
+    id: '550e8400-e29b-41d4-a716-446655440011',
     name: 'Jessica Brown',
     email: 'jessica.brown@example.com',
     phoneNumber: '+251901234567',
@@ -180,7 +180,7 @@ export const initialUsers: User[] = [
     ],
   },
   {
-    id: uuid.v4() as string,
+    id: '550e8400-e29b-41d4-a716-446655440012',
     name: 'Christopher Davis',
     email: 'christopher.davis@example.com',
     phoneNumber: '+251902345678',
@@ -195,7 +195,7 @@ export const initialUsers: User[] = [
     ],
   },
   {
-    id: uuid.v4() as string,
+    id: '550e8400-e29b-41d4-a716-446655440013',
     name: 'Amanda Garcia',
     email: 'amanda.garcia@example.com',
     phoneNumber: '+251903456789',
@@ -210,7 +210,7 @@ export const initialUsers: User[] = [
     ],
   },
   {
-    id: uuid.v4() as string,
+    id: '550e8400-e29b-41d4-a716-446655440014',
     name: 'Daniel Martinez',
     email: 'daniel.martinez@example.com',
     phoneNumber: '+251904567890',
@@ -225,7 +225,7 @@ export const initialUsers: User[] = [
     ],
   },
   {
-    id: uuid.v4() as string,
+    id: '550e8400-e29b-41d4-a716-446655440015',
     name: 'Rachel Taylor',
     email: 'rachel.taylor@example.com',
     phoneNumber: '+251905678901',
@@ -240,7 +240,7 @@ export const initialUsers: User[] = [
     ],
   },
   {
-    id: uuid.v4() as string,
+    id: '550e8400-e29b-41d4-a716-446655440016',
     name: 'Andrew White',
     email: 'andrew.white@example.com',
     phoneNumber: '+251906789012',
@@ -255,7 +255,7 @@ export const initialUsers: User[] = [
     ],
   },
   {
-    id: uuid.v4() as string,
+    id: '550e8400-e29b-41d4-a716-446655440017',
     name: 'Stephanie Lewis',
     email: 'stephanie.lewis@example.com',
     phoneNumber: '+251907890123',
@@ -270,7 +270,7 @@ export const initialUsers: User[] = [
     ],
   },
   {
-    id: uuid.v4() as string,
+    id: '550e8400-e29b-41d4-a716-446655440018',
     name: 'Kevin Clark',
     email: 'kevin.clark@example.com',
     phoneNumber: '+251908901234',
@@ -285,7 +285,7 @@ export const initialUsers: User[] = [
     ],
   },
   {
-    id: uuid.v4() as string,
+    id: '550e8400-e29b-41d4-a716-446655440019',
     name: 'Nicole Walker',
     email: 'nicole.walker@example.com',
     phoneNumber: '+251909012345',
@@ -300,7 +300,7 @@ export const initialUsers: User[] = [
     ],
   },
   {
-    id: uuid.v4() as string,
+    id: '550e8400-e29b-41d4-a716-446655440020',
     name: 'Brandon Hall',
     email: 'brandon.hall@example.com',
     phoneNumber: '+251910123456',
@@ -339,422 +339,422 @@ export const initialTransfers: Transfer[] = [
     transactionId: generateTransactionId(),
     user: initialUsers.find((u) => u.id === initialUsers[1].id)!,
   },
-  // {
-  //   userId: initialUsers[2].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 560.0,
-  //   currencyType: 'USD',
-  //   type: 'sent',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[2].id)!,
-  // },
-  // {
-  //   userId: initialUsers[3].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 320.0,
-  //   currencyType: 'USD',
-  //   type: 'sent',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[3].id)!,
-  // },
-  // {
-  //   userId: initialUsers[4].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 180.0,
-  //   currencyType: 'ETB',
-  //   type: 'received',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[4].id)!,
-  // },
-  // {
-  //   userId: initialUsers[5].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 450.0,
-  //   currencyType: 'USD',
-  //   type: 'sent',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[5].id)!,
-  // },
-  // {
-  //   userId: initialUsers[6].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 750.0,
-  //   currencyType: 'ETB',
-  //   type: 'received',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[6].id)!,
-  // },
-  // {
-  //   userId: initialUsers[7].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 890.0,
-  //   currencyType: 'USD',
-  //   type: 'sent',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[7].id)!,
-  // },
-  // {
-  //   userId: initialUsers[8].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 340.0,
-  //   currencyType: 'ETB',
-  //   type: 'received',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[8].id)!,
-  // },
-  // {
-  //   userId: initialUsers[9].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 620.0,
-  //   currencyType: 'USD',
-  //   type: 'sent',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[9].id)!,
-  // },
-  // {
-  //   userId: initialUsers[10].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 270.0,
-  //   currencyType: 'ETB',
-  //   type: 'received',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[10].id)!,
-  // },
-  // {
-  //   userId: initialUsers[11].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 1100.0,
-  //   currencyType: 'USD',
-  //   type: 'sent',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[11].id)!,
-  // },
-  // {
-  //   userId: initialUsers[12].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 430.0,
-  //   currencyType: 'ETB',
-  //   type: 'received',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[12].id)!,
-  // },
-  // {
-  //   userId: initialUsers[13].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 680.0,
-  //   currencyType: 'USD',
-  //   type: 'sent',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[13].id)!,
-  // },
-  // {
-  //   userId: initialUsers[14].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 520.0,
-  //   currencyType: 'ETB',
-  //   type: 'received',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[14].id)!,
-  // },
-  // {
-  //   userId: initialUsers[15].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 790.0,
-  //   currencyType: 'USD',
-  //   type: 'sent',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[15].id)!,
-  // },
-  // {
-  //   userId: initialUsers[16].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 210.0,
-  //   currencyType: 'ETB',
-  //   type: 'received',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[16].id)!,
-  // },
-  // {
-  //   userId: initialUsers[17].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 950.0,
-  //   currencyType: 'USD',
-  //   type: 'sent',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[17].id)!,
-  // },
-  // {
-  //   userId: initialUsers[18].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 380.0,
-  //   currencyType: 'ETB',
-  //   type: 'received',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[18].id)!,
-  // },
-  // {
-  //   userId: initialUsers[19].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 1350.0,
-  //   currencyType: 'USD',
-  //   type: 'sent',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[19].id)!,
-  // },
-  // {
-  //   userId: initialUsers[0].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 420.0,
-  //   currencyType: 'ETB',
-  //   type: 'received',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[0].id)!,
-  // },
-  // {
-  //   userId: initialUsers[1].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 680.0,
-  //   currencyType: 'USD',
-  //   type: 'sent',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[1].id)!,
-  // },
-  // {
-  //   userId: initialUsers[2].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 290.0,
-  //   currencyType: 'ETB',
-  //   type: 'received',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[2].id)!,
-  // },
-  // {
-  //   userId: initialUsers[3].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 1150.0,
-  //   currencyType: 'USD',
-  //   type: 'sent',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[3].id)!,
-  // },
-  // {
-  //   userId: initialUsers[4].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 530.0,
-  //   currencyType: 'ETB',
-  //   type: 'received',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[4].id)!,
-  // },
-  // {
-  //   userId: initialUsers[5].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 820.0,
-  //   currencyType: 'USD',
-  //   type: 'sent',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[5].id)!,
-  // },
-  // {
-  //   userId: initialUsers[6].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 360.0,
-  //   currencyType: 'ETB',
-  //   type: 'received',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[6].id)!,
-  // },
-  // {
-  //   userId: initialUsers[7].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 740.0,
-  //   currencyType: 'USD',
-  //   type: 'sent',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[7].id)!,
-  // },
-  // {
-  //   userId: initialUsers[8].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 190.0,
-  //   currencyType: 'ETB',
-  //   type: 'received',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[8].id)!,
-  // },
-  // {
-  //   userId: initialUsers[9].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 1280.0,
-  //   currencyType: 'USD',
-  //   type: 'sent',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[9].id)!,
-  // },
-  // {
-  //   userId: initialUsers[10].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 460.0,
-  //   currencyType: 'ETB',
-  //   type: 'received',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[10].id)!,
-  // },
-  // {
-  //   userId: initialUsers[11].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 590.0,
-  //   currencyType: 'USD',
-  //   type: 'sent',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[11].id)!,
-  // },
-  // {
-  //   userId: initialUsers[12].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 310.0,
-  //   currencyType: 'ETB',
-  //   type: 'received',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[12].id)!,
-  // },
-  // {
-  //   userId: initialUsers[13].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 870.0,
-  //   currencyType: 'USD',
-  //   type: 'sent',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[13].id)!,
-  // },
-  // {
-  //   userId: initialUsers[14].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 240.0,
-  //   currencyType: 'ETB',
-  //   type: 'received',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[14].id)!,
-  // },
-  // {
-  //   userId: initialUsers[15].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 1050.0,
-  //   currencyType: 'USD',
-  //   type: 'sent',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[15].id)!,
-  // },
-  // {
-  //   userId: initialUsers[16].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 480.0,
-  //   currencyType: 'ETB',
-  //   type: 'received',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[16].id)!,
-  // },
-  // {
-  //   userId: initialUsers[17].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 660.0,
-  //   currencyType: 'USD',
-  //   type: 'sent',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[17].id)!,
-  // },
-  // {
-  //   userId: initialUsers[18].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 330.0,
-  //   currencyType: 'ETB',
-  //   type: 'received',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[18].id)!,
-  // },
-  // {
-  //   userId: initialUsers[19].id,
-  //   date: dayjs()
-  //     .subtract(Math.floor(Math.random() * 30), 'day')
-  //     .toISOString(),
-  //   amount: 920.0,
-  //   currencyType: 'USD',
-  //   type: 'sent',
-  //   transactionId: generateTransactionId(),
-  //   user: initialUsers.find((u) => u.id === initialUsers[19].id)!,
-  // },
+  {
+    userId: initialUsers[2].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 560.0,
+    currencyType: 'USD',
+    type: 'sent',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[2].id)!,
+  },
+  {
+    userId: initialUsers[3].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 320.0,
+    currencyType: 'USD',
+    type: 'sent',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[3].id)!,
+  },
+  {
+    userId: initialUsers[4].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 180.0,
+    currencyType: 'ETB',
+    type: 'received',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[4].id)!,
+  },
+  {
+    userId: initialUsers[5].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 450.0,
+    currencyType: 'USD',
+    type: 'sent',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[5].id)!,
+  },
+  {
+    userId: initialUsers[6].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 750.0,
+    currencyType: 'ETB',
+    type: 'received',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[6].id)!,
+  },
+  {
+    userId: initialUsers[7].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 890.0,
+    currencyType: 'USD',
+    type: 'sent',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[7].id)!,
+  },
+  {
+    userId: initialUsers[8].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 340.0,
+    currencyType: 'ETB',
+    type: 'received',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[8].id)!,
+  },
+  {
+    userId: initialUsers[9].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 620.0,
+    currencyType: 'USD',
+    type: 'sent',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[9].id)!,
+  },
+  {
+    userId: initialUsers[10].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 270.0,
+    currencyType: 'ETB',
+    type: 'received',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[10].id)!,
+  },
+  {
+    userId: initialUsers[11].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 1100.0,
+    currencyType: 'USD',
+    type: 'sent',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[11].id)!,
+  },
+  {
+    userId: initialUsers[12].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 430.0,
+    currencyType: 'ETB',
+    type: 'received',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[12].id)!,
+  },
+  {
+    userId: initialUsers[13].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 680.0,
+    currencyType: 'USD',
+    type: 'sent',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[13].id)!,
+  },
+  {
+    userId: initialUsers[14].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 520.0,
+    currencyType: 'ETB',
+    type: 'received',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[14].id)!,
+  },
+  {
+    userId: initialUsers[15].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 790.0,
+    currencyType: 'USD',
+    type: 'sent',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[15].id)!,
+  },
+  {
+    userId: initialUsers[16].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 210.0,
+    currencyType: 'ETB',
+    type: 'received',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[16].id)!,
+  },
+  {
+    userId: initialUsers[17].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 950.0,
+    currencyType: 'USD',
+    type: 'sent',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[17].id)!,
+  },
+  {
+    userId: initialUsers[18].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 380.0,
+    currencyType: 'ETB',
+    type: 'received',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[18].id)!,
+  },
+  {
+    userId: initialUsers[19].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 1350.0,
+    currencyType: 'USD',
+    type: 'sent',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[19].id)!,
+  },
+  {
+    userId: initialUsers[0].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 420.0,
+    currencyType: 'ETB',
+    type: 'received',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[0].id)!,
+  },
+  {
+    userId: initialUsers[1].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 680.0,
+    currencyType: 'USD',
+    type: 'sent',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[1].id)!,
+  },
+  {
+    userId: initialUsers[2].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 290.0,
+    currencyType: 'ETB',
+    type: 'received',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[2].id)!,
+  },
+  {
+    userId: initialUsers[3].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 1150.0,
+    currencyType: 'USD',
+    type: 'sent',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[3].id)!,
+  },
+  {
+    userId: initialUsers[4].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 530.0,
+    currencyType: 'ETB',
+    type: 'received',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[4].id)!,
+  },
+  {
+    userId: initialUsers[5].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 820.0,
+    currencyType: 'USD',
+    type: 'sent',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[5].id)!,
+  },
+  {
+    userId: initialUsers[6].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 360.0,
+    currencyType: 'ETB',
+    type: 'received',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[6].id)!,
+  },
+  {
+    userId: initialUsers[7].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 740.0,
+    currencyType: 'USD',
+    type: 'sent',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[7].id)!,
+  },
+  {
+    userId: initialUsers[8].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 190.0,
+    currencyType: 'ETB',
+    type: 'received',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[8].id)!,
+  },
+  {
+    userId: initialUsers[9].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 1280.0,
+    currencyType: 'USD',
+    type: 'sent',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[9].id)!,
+  },
+  {
+    userId: initialUsers[10].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 460.0,
+    currencyType: 'ETB',
+    type: 'received',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[10].id)!,
+  },
+  {
+    userId: initialUsers[11].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 590.0,
+    currencyType: 'USD',
+    type: 'sent',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[11].id)!,
+  },
+  {
+    userId: initialUsers[12].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 310.0,
+    currencyType: 'ETB',
+    type: 'received',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[12].id)!,
+  },
+  {
+    userId: initialUsers[13].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 870.0,
+    currencyType: 'USD',
+    type: 'sent',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[13].id)!,
+  },
+  {
+    userId: initialUsers[14].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 240.0,
+    currencyType: 'ETB',
+    type: 'received',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[14].id)!,
+  },
+  {
+    userId: initialUsers[15].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 1050.0,
+    currencyType: 'USD',
+    type: 'sent',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[15].id)!,
+  },
+  {
+    userId: initialUsers[16].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 480.0,
+    currencyType: 'ETB',
+    type: 'received',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[16].id)!,
+  },
+  {
+    userId: initialUsers[17].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 660.0,
+    currencyType: 'USD',
+    type: 'sent',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[17].id)!,
+  },
+  {
+    userId: initialUsers[18].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 330.0,
+    currencyType: 'ETB',
+    type: 'received',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[18].id)!,
+  },
+  {
+    userId: initialUsers[19].id,
+    date: dayjs()
+      .subtract(Math.floor(Math.random() * 30), 'day')
+      .toISOString(),
+    amount: 920.0,
+    currencyType: 'USD',
+    type: 'sent',
+    transactionId: generateTransactionId(),
+    user: initialUsers.find((u) => u.id === initialUsers[19].id)!,
+  },
 ]

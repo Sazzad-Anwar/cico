@@ -172,9 +172,9 @@ export const SnackbarItem: React.FC<SnackbarItemProps> = ({
       >
         {/* Icon */}
         <IconComponent
-          size={20}
+          size={18}
           color={theme.textColor}
-          style={{ marginRight: 12, marginTop: 3 }}
+          style={{ marginRight: 12, marginTop: 2 }}
         />
 
         {/* Content */}

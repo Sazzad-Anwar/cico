@@ -57,8 +57,8 @@ const loadUsers = async (): Promise<{
     // }
     return {
       users: JSON.parse(usersData || '[]'),
-      transfers: (JSON.parse(transfers || '[]') as Transfer[]).sort((a, b) =>
-        dayjs(b.date).isBefore(dayjs(a.date)) ? 1 : -1,
+      transfers: (JSON.parse(transfers || '[]') as Transfer[]).sort(
+        (a, b) => dayjs(b.date).valueOf() - dayjs(a.date).valueOf(),
       ),
     }
   } catch (error) {
@@ -76,7 +76,9 @@ const useDataStore = create<DataStore>((set, get) => ({
   users: [],
   isLoading: false,
   error: null,
-  transfers: initialTransfers,
+  transfers: initialTransfers.sort(
+    (a, b) => dayjs(b.date).valueOf() - dayjs(a.date).valueOf(),
+  ),
   loadData: async () => {
     try {
       set((state) => ({ ...state, isLoading: true, error: null }))
@@ -154,13 +156,16 @@ const useDataStore = create<DataStore>((set, get) => ({
     try {
       set((state) => ({ ...state, isLoading: true, error: null }))
       await new Promise((resolve) => setTimeout(resolve, 1000))
+      const sortedTransfers = initialTransfers.sort(
+        (a, b) => dayjs(b.date).valueOf() - dayjs(a.date).valueOf(),
+      )
       await AsyncStorage.setItem('users', JSON.stringify(initialUsers))
-      await AsyncStorage.setItem('transfers', JSON.stringify(initialTransfers))
+      await AsyncStorage.setItem('transfers', JSON.stringify(sortedTransfers))
       set((state) => ({
         ...state,
         isLoading: false,
         users: initialUsers,
-        transfers: initialTransfers,
+        transfers: sortedTransfers,
       }))
     } catch (error) {
       console.log(error)
@@ -199,8 +204,8 @@ const useDataStore = create<DataStore>((set, get) => ({
     set((state) => ({ ...state, isLoading: true, error: null }))
     await new Promise((resolve) => setTimeout(resolve, 1000))
     try {
-      const transfers = [...get().transfers, transfer].sort((a, b) =>
-        dayjs(b.date).isBefore(dayjs(a.date)) ? 1 : -1,
+      const transfers = [...get().transfers, transfer].sort(
+        (a, b) => dayjs(b.date).valueOf() - dayjs(a.date).valueOf(),
       )
 
       await AsyncStorage.setItem('transfers', JSON.stringify(transfers))
@@ -236,16 +241,37 @@ const useDataStore = create<DataStore>((set, get) => ({
 
     await new Promise((resolve) => setTimeout(resolve, 500))
 
-    set((state) => ({
-      transfers: query.length
-        ? state.transfers.filter(
+    if (query.length) {
+      // Filter current transfers based on search query and sort by date descending
+      set((state) => ({
+        transfers: state.transfers
+          .filter(
             (transfer) =>
               transfer.user.name.toLowerCase().includes(query.toLowerCase()) ||
               transfer.transactionId.includes(query),
           )
-        : initialTransfers,
-      isLoading: false,
-    }))
+          .sort((a, b) => dayjs(b.date).valueOf() - dayjs(a.date).valueOf()),
+        isLoading: false,
+      }))
+    } else {
+      // Load all transfers from AsyncStorage when search is empty
+      try {
+        const transfers = await AsyncStorage.getItem('transfers')
+        const allTransfers = transfers ? JSON.parse(transfers) : []
+        set((state) => ({
+          transfers: (allTransfers as Transfer[]).sort(
+            (a, b) => dayjs(b.date).valueOf() - dayjs(a.date).valueOf(),
+          ),
+          isLoading: false,
+        }))
+      } catch (error) {
+        console.log(error)
+        set((state) => ({
+          transfers: state.transfers, // Keep current state if loading fails
+          isLoading: false,
+        }))
+      }
+    }
   },
 }))
 

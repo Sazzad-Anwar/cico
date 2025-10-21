@@ -22,7 +22,7 @@ type CardTopUpForm = z.infer<typeof CardTopUpSchema>
 
 export default function BankInput() {
   const snackbar = useSnackbarContext()
-  const { dismiss } = useRouter()
+  const router = useRouter()
   const { user, updateUser, isLoading } = useAuthStore()
   const { amount, currency, method } = useLocalSearchParams()
   const form = useForm<CardTopUpForm>({
@@ -51,7 +51,7 @@ export default function BankInput() {
       })
     }
 
-    dismiss()
+    router.back()
   }
 
   return (
@@ -166,7 +166,8 @@ export default function BankInput() {
       />
 
       <Button
-        title="Next"
+        title="Top up"
+        disabled={!form.formState.isValid}
         onPress={form.handleSubmit(handleTopUp)}
       />
     </View>

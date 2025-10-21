@@ -48,6 +48,9 @@ export default function Transfers({
   const isHomePage = pathName === '/' || pathName === '/home'
   const { height } = Dimensions.get('screen')
 
+  const transferUsers = [...new Set(transfers.slice(0, 5).map((t) => t.userId))]
+  const recentUsers = transferUsers.map((id) => users.find((u) => u.id === id))
+
   useEffect(() => {
     if (!!debouncedValue) {
       searchUser(debouncedValue)
@@ -84,7 +87,7 @@ export default function Transfers({
             </Pressable>
           )}
         </View>
-        <View className="flex flex-row items-center justify-between rounded-xl bg-white px-3 py-3">
+        <View className="flex flex-row items-center justify-between rounded-xl bg-white px-2 py-3">
           <View className="flex flex-row items-center justify-start">
             {users?.length === 0 ? (
               <>
@@ -95,20 +98,20 @@ export default function Transfers({
               </>
             ) : (
               <>
-                {transfers.slice(0, 4).map((transfer, index) => (
+                {recentUsers.map((user, index) => (
                   <TouchableOpacity
-                    key={transfer.transactionId + '_' + index}
+                    key={user?.id + '_' + transfers[index]?.transactionId}
                     onPress={() => {
                       if (isUserSelectable) {
-                        setSelectedUser(transfer.user)
+                        setSelectedUser(user!)
                       } else {
                         push({
                           pathname: `/send-money`,
-                          params: { user: JSON.stringify(transfer.user) },
+                          params: { user: JSON.stringify(user) },
                         })
                       }
                     }}
-                    className="px-2"
+                    className="px-1"
                   >
                     <View
                       from={{ scale: 0.8 }}
@@ -120,16 +123,16 @@ export default function Transfers({
                         duration: 800,
                         delay: index * 100,
                       }}
-                      className="android:gap-1 ios:gap-2 relative flex flex-col items-center justify-center pt-1 w-16"
+                      className="android:gap-1 ios:gap-2 relative flex flex-col items-center justify-center pt-1 w-[65px]"
                     >
                       <Image
                         className="size-12 rounded-xl"
-                        source={{ uri: transfer.user.avatar }}
+                        source={{ uri: user?.avatar }}
                       />
                       <Text className="text-center font-dmSans text-xs font-medium leading-none">
-                        {transfer.user.name.split(' ')[0]}
+                        {user?.name.split(' ')[0]}
                       </Text>
-                      {selectedUser?.email === transfer.user.email ? (
+                      {selectedUser?.email === user?.email ? (
                         <View className="absolute right-1 top-0 rounded-full bg-green-700">
                           <Check
                             size={14}
