@@ -11,8 +11,10 @@ import { Text, View } from 'moti'
 import { Icon } from '../../components/ui/icon'
 import { cn } from '../../lib/utils'
 import { Platform } from 'react-native'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 export default function HomeRootLayout() {
+  const { bottom } = useSafeAreaInsets()
   const tabs = [
     {
       name: 'home',
@@ -59,6 +61,8 @@ export default function HomeRootLayout() {
             tabBarStyle: {
               marginTop: 0,
               paddingTop: 0,
+              marginBottom: Platform.OS === 'android' ? bottom : 0,
+              paddingBottom: Platform.OS === 'ios' ? bottom : 0,
               top: 0,
               backgroundColor: 'white',
               height: Platform.OS === 'ios' ? 80 : 75,

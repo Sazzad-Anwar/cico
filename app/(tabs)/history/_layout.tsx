@@ -27,7 +27,10 @@ export default function RootHistoryLayout() {
       title: 'All',
       component: '/(tabs)/history/all' as Href,
       isFocused:
-        pathName === '/history/all' || pathName === '/tabs)/history/all',
+        pathName === '/history/all' ||
+        pathName === '/tabs)/history/all' ||
+        pathName === '/history' ||
+        pathName === '/(tabs)/history',
     },
     {
       name: 'sent',
@@ -69,7 +72,7 @@ export default function RootHistoryLayout() {
             from={{ left: 4 }}
             animate={{
               left:
-                pathName === '/history/all'
+                pathName === '/history/all' || pathName === '/history'
                   ? 4
                   : pathName === '/history/sent'
                   ? width / 3
