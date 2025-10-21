@@ -23,7 +23,7 @@ export default function History({
   }
 
   return (
-    <View className="mt-3 bg-white rounded-2xl p-5 pb-0 mb-3">
+    <View className="mt-1 bg-white rounded-2xl p-5 pb-0 mb-2">
       <FlatList
         data={
           transactionType === 'all'

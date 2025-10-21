@@ -9,10 +9,12 @@ import useAuthStore, { User } from '@/store/auth.store'
 import Button from '@/components/custom-button'
 import { useSnackbarContext } from '@/components/ui/snackbar'
 import Loader from '../../components/loader'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 export default function InstitutePaymentScreen() {
   const snackbar = useSnackbarContext()
   const { user, updateUser, isLoading } = useAuthStore()
+  const { bottom } = useSafeAreaInsets()
   const router = useRouter()
   const [amount, setAmount] = useState(0)
   const [selectedTab, setSelectedTab] = useState('USD')
@@ -134,7 +136,10 @@ export default function InstitutePaymentScreen() {
           </View>
         </View>
       </View>
-      <View className="absolute bottom-7 flex w-full flex-row items-center justify-center gap-2 mt-4 android:mb-2">
+      <View
+        style={{ bottom }}
+        className="absolute flex w-full flex-row items-center justify-center gap-2 mt-4 android:mb-2"
+      >
         <Button
           className="bg-transparent data-[active=true]:border-[#D1D1D1] border border-[#D1D1D1] w-1/2"
           buttonTextClassName="text-button"
@@ -143,6 +148,12 @@ export default function InstitutePaymentScreen() {
         />
         <Button
           title="Confirm"
+          disabled={
+            amount <= 0 ||
+            amount >
+              (user?.deposit?.find((item) => item.type === selectedTab)
+                ?.amount || 0)
+          }
           onPress={() => handleConfirm()}
           className="w-[45%]"
         />

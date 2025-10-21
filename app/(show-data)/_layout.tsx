@@ -1,26 +1,31 @@
 import { HandCoins, UsersRound } from 'lucide-react-native'
-import { cn } from '../../lib/utils'
+import { cn } from '@/lib/utils'
 import { Text, View } from 'moti'
-import { Platform } from 'react-native'
-import { Tabs } from 'expo-router'
-import { Icon } from '../../components/ui/icon'
-import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import Header from '../../components/header'
+import { Tabs, TabTrigger, TabList, TabSlot } from 'expo-router/ui'
+import Header from '@/components/header'
+import { Href, usePathname } from 'expo-router'
+import { Dimensions } from 'react-native'
 
 export default function ShowDataRootLayout() {
-  const { top } = useSafeAreaInsets()
+  const pathName = usePathname()
+  const { width } = Dimensions.get('screen')
+
   const tabs = [
     {
       name: 'users',
       title: 'Users',
       icon: UsersRound,
-      component: 'users',
+      component: '/(show-data)/users' as Href,
+      isFocused: pathName === '/users' || pathName === '/(show-data)/users',
     },
     {
       name: 'transactions',
       title: 'Transactions',
       icon: HandCoins,
-      component: 'transactions',
+      component: '/(show-data)/transactions' as Href,
+      isFocused:
+        pathName === '/transactions' ||
+        pathName === '/(show-data)/transactions',
     },
   ]
 
@@ -28,56 +33,43 @@ export default function ShowDataRootLayout() {
     <View className="flex-1 px-3 android:mt-3">
       <Header title="Show Data" />
       <View className="h-5" />
-      <Tabs
-        screenOptions={{
-          headerShown: false,
-          tabBarPosition: 'top',
-        }}
-      >
-        {tabs.map((tab) => (
-          <Tabs.Screen
-            key={tab.name}
-            name={tab.name}
-            options={{
-              title: tab.title,
-              tabBarIconStyle: { display: 'none' },
-              tabBarBackground: () => <View className="bg-white" />,
-              headerShown: false,
-              animation: 'shift',
-              tabBarStyle: {
-                marginTop: 0,
-                paddingTop: 0,
-                top: 0,
-                padding: 6,
-                maxHeight: 50,
-                borderRadius: 100,
-                backgroundColor: 'white',
-                height: Platform.OS === 'ios' ? 80 : 75,
-              },
-              tabBarLabel: ({ focused }) => {
-                return (
-                  <View
-                    className={cn(
-                      'h-full rounded-full w-full flex justify-center items-center',
-                      focused ? 'bg-button ' : 'bg-white',
-                    )}
-                  >
-                    <Text
-                      className={cn(
-                        focused
-                          ? 'text-white font-semibold'
-                          : 'text-[#6D6D6D] font-medium',
-                        'text-sm',
-                      )}
-                    >
-                      {tab.title}
-                    </Text>
-                  </View>
-                )
-              },
+      <Tabs>
+        <TabList className="w-full relative bg-white py-1 px-3 rounded-full flex justify-between flex-row items-center mb-2">
+          <View
+            from={{ left: 4 }}
+            animate={{
+              left: pathName === '/users' ? 4 : width / 2 - 4,
             }}
+            transition={{
+              type: 'spring',
+              duration: 400,
+            }}
+            className="absolute z-0 w-1/2 h-full rounded-full bg-button"
           />
-        ))}
+          {tabs.map((tab) => (
+            <TabTrigger
+              key={tab.name}
+              name={tab.name}
+              href={tab.component}
+              className={cn('h-full rounded-full w-1/2 py-2.5')}
+            >
+              <Text
+                className={cn(
+                  tab.isFocused
+                    ? 'text-white font-semibold'
+                    : 'text-[#6D6D6D] font-medium',
+                  'text-base w-full',
+                  tab.name === 'users'
+                    ? 'text-center mx-auto pr-4'
+                    : 'text-center mx-auto pl-3',
+                )}
+              >
+                {tab.title}
+              </Text>
+            </TabTrigger>
+          ))}
+        </TabList>
+        <TabSlot />
       </Tabs>
     </View>
   )

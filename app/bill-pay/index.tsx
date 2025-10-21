@@ -1,10 +1,10 @@
-import { Image, View, Text, ScrollView } from 'moti'
+import { Image, View, Text, ScrollView, AnimatePresence } from 'moti'
 import Header from '@/components/header'
 import { Search, X } from 'lucide-react-native'
 import { Input, InputField } from '@/components/ui/input'
 import { useEffect, useState } from 'react'
 import { useDebounceValue } from 'usehooks-ts'
-import { TouchableOpacity } from 'react-native'
+import { Dimensions, TouchableOpacity } from 'react-native'
 import {
   Actionsheet,
   ActionsheetContent,
@@ -18,6 +18,7 @@ import {
 
 import { cn } from '@/lib/utils'
 import { useRouter } from 'expo-router'
+import { LinearTransition } from 'react-native-reanimated'
 
 const serviceItems = [
   {
@@ -146,6 +147,7 @@ export default function BillPaymentScreen() {
   const [institutions, setInstituitions] = useState(instituitionItems)
   const [openActionsheet, setOpenActionsheet] = useState(false)
   const router = useRouter()
+  const { width } = Dimensions.get('screen')
 
   useEffect(() => {
     if (!!debouncedValue) {
@@ -192,28 +194,43 @@ export default function BillPaymentScreen() {
         <Text className="font-dmSans text-lg font-semibold">
           Select Service
         </Text>
-        <View className="flex flex-row flex-wrap items-center justify-start gap-x-2 gap-y-4">
-          {serviceItems.map((item) => (
+        <View className="flex flex-row flex-wrap items-center justify-between gap-y-4">
+          {serviceItems.map((item, index) => (
             <TouchableOpacity
               key={item.name}
               onPress={() => {
                 setSelectedService(item.name)
                 setOpenActionsheet(true)
               }}
-              className={cn(
-                'flex min-w-[80px] flex-col items-center justify-center gap-1.5 rounded-lg border border-transparent bg-white px-3 py-2',
-                selectedService === item.name
-                  ? 'border-button bg-green-100/50'
-                  : 'bg-white',
-              )}
+              style={{ width: width / 4 }}
             >
-              <Image
-                className="size-6"
-                source={item.icon}
-              />
-              <Text className="font-dmSans text-[10px] font-light">
-                {item.name}
-              </Text>
+              <View
+                from={{ translateY: 20, scale: 0.8, opacity: 0 }}
+                animate={{
+                  scale: 1,
+                  opacity: 1,
+                  translateY: 0,
+                }}
+                transition={{
+                  type: 'timing',
+                  duration: index * 200,
+                  delay: index * 50,
+                }}
+                className={cn(
+                  'flex min-w-[80px] flex-col items-center justify-center gap-1.5 rounded-lg border border-transparent bg-white px-3 py-2',
+                  selectedService === item.name
+                    ? 'border-button bg-green-100/50'
+                    : 'bg-white',
+                )}
+              >
+                <Image
+                  className="size-6"
+                  source={item.icon}
+                />
+                <Text className="font-dmSans text-[10px] font-light">
+                  {item.name}
+                </Text>
+              </View>
             </TouchableOpacity>
           ))}
         </View>
@@ -227,23 +244,47 @@ export default function BillPaymentScreen() {
           className="max-h-[600px] gap-y-2 rounded-2xl bg-white p-3"
           showsVerticalScrollIndicator={false}
         >
-          {institutions.slice(0, 4).map((institution, index) => (
-            <View
-              key={institution.name + '_' + index}
-              className="mb-4 flex flex-row items-center gap-2"
-            >
-              <Image
-                source={require('@/assets/images/document.png')}
-                className="size-12 rounded-2xl"
-              />
-              <View>
-                <Text className="font-dmSans text-base font-semibold">
-                  WAPDA
-                </Text>
-                <Text className="text-sm text-[#5D5D5D]">Water</Text>
+          <AnimatePresence>
+            {institutions.slice(0, 4).map((institution, index) => (
+              <View
+                layout={LinearTransition.springify().damping(40).stiffness(400)} // 👈 enable automatic layout animation
+                from={{
+                  opacity: 0,
+                  translateY: 50,
+                  translateX: 0,
+                  scale: 0.9,
+                }}
+                animate={{
+                  opacity: 1,
+                  translateY: 0,
+                  scale: 1,
+                }}
+                transition={{
+                  type: index !== 0 ? 'timing' : 'spring',
+                  duration: 600,
+                  delay: index * 100,
+                }}
+                exit={{
+                  translateX: 300,
+                  opacity: 0,
+                  scale: 0.8,
+                }}
+                key={institution.name + '_' + index}
+                className="mb-4 flex flex-row items-center gap-2"
+              >
+                <Image
+                  source={require('@/assets/images/document.png')}
+                  className="size-12 rounded-2xl"
+                />
+                <View>
+                  <Text className="font-dmSans text-base font-semibold">
+                    WAPDA
+                  </Text>
+                  <Text className="text-sm text-[#5D5D5D]">Water</Text>
+                </View>
               </View>
-            </View>
-          ))}
+            ))}
+          </AnimatePresence>
         </ScrollView>
       </View>
 
@@ -272,26 +313,53 @@ export default function BillPaymentScreen() {
               />
             </TouchableOpacity>
           </View>
-          <ActionsheetScrollView className="h-1/3">
+          <ActionsheetScrollView className="h-1/2">
             {institutions
               .filter((institution) => institution.type === selectedService)
-              .map((institution) => (
+              .map((institution, index) => (
                 <ActionsheetItem
                   key={institution.name}
                   onPress={() => onSelectInstitute(institution)}
-                  className="flex flex-row items-center gap-2"
                 >
-                  <Image
-                    source={require('@/assets/images/document.png')}
-                    className="size-12 rounded-2xl"
-                  />
-                  <View>
-                    <Text className="font-dmSans text-base font-semibold">
-                      {institution.name}
-                    </Text>
-                    <Text className="text-sm text-[#5D5D5D]">
-                      {institution.type}
-                    </Text>
+                  <View
+                    layout={LinearTransition.springify()
+                      .damping(40)
+                      .stiffness(400)} // 👈 enable automatic layout animation
+                    from={{
+                      opacity: 0,
+                      translateY: 50,
+                      translateX: 0,
+                      scale: 0.9,
+                    }}
+                    animate={{
+                      opacity: 1,
+                      translateY: 0,
+                      scale: 1,
+                    }}
+                    transition={{
+                      type: index !== 0 ? 'timing' : 'spring',
+                      duration: 600,
+                      delay: index * 100,
+                    }}
+                    exit={{
+                      translateX: 300,
+                      opacity: 0,
+                      scale: 0.8,
+                    }}
+                    className="flex flex-row items-center gap-2"
+                  >
+                    <Image
+                      source={require('@/assets/images/document.png')}
+                      className="size-12 rounded-2xl"
+                    />
+                    <View>
+                      <Text className="font-dmSans text-base font-semibold">
+                        {institution.name}
+                      </Text>
+                      <Text className="text-sm text-[#5D5D5D]">
+                        {institution.type}
+                      </Text>
+                    </View>
                   </View>
                 </ActionsheetItem>
               ))}

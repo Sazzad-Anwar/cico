@@ -1,7 +1,7 @@
 import { Link, useLocalSearchParams, usePathname, useRouter } from 'expo-router'
 import { AnimatePresence, Image, Text, View } from 'moti'
 import useDataStore from '../store/data.store'
-import { Dimensions, Pressable, TouchableOpacity } from 'react-native'
+import { Dimensions, Platform, Pressable, TouchableOpacity } from 'react-native'
 import {
   Actionsheet,
   ActionsheetContent,
@@ -48,7 +48,7 @@ export default function Transfers({
   const isHomePage = pathName === '/' || pathName === '/home'
   const { height } = Dimensions.get('screen')
 
-  const transferUsers = [...new Set(transfers.slice(0, 5).map((t) => t.userId))]
+  const transferUsers = [...new Set(transfers.slice(0, 4).map((t) => t.userId))]
   const recentUsers = transferUsers.map((id) => users.find((u) => u.id === id))
 
   useEffect(() => {
@@ -123,14 +123,20 @@ export default function Transfers({
                         duration: 800,
                         delay: index * 100,
                       }}
-                      className="android:gap-1 ios:gap-2 relative flex flex-col items-center justify-center pt-1 w-[65px]"
+                      className="android:gap-1 ios:gap-2 relative flex flex-col items-center justify-center pt-1 w-16 ios:w-[65px]"
                     >
                       <Image
                         className="size-12 rounded-xl"
                         source={{ uri: user?.avatar }}
                       />
                       <Text className="text-center font-dmSans text-xs font-medium leading-none">
-                        {user?.name.split(' ')[0]}
+                        {Platform.OS === 'android'
+                          ? user?.name.length! > 8
+                            ? `${user?.name.slice(0, 7)}..`
+                            : user?.name
+                          : user?.name.length! > 10
+                          ? `${user?.name.slice(0, 9)}..`
+                          : user?.name}
                       </Text>
                       {selectedUser?.email === user?.email ? (
                         <View className="absolute right-1 top-0 rounded-full bg-green-700">

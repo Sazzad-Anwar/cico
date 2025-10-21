@@ -1,6 +1,5 @@
-import { Tabs } from 'expo-router'
+import { TabList, Tabs, TabSlot, TabTrigger } from 'expo-router/ui'
 import { Text, View } from 'moti'
-import { Platform } from 'react-native'
 import { cn } from '@/lib/utils'
 import Header from '@/components/header'
 import { Search } from 'lucide-react-native'
@@ -8,11 +7,15 @@ import { Input, InputField } from '@/components/ui/input'
 import { useEffect, useState } from 'react'
 import useDataStore from '@/store/data.store'
 import { useDebounceValue } from 'usehooks-ts'
+import { Href, usePathname } from 'expo-router'
+import { Dimensions } from 'react-native'
 
 export default function RootHistoryLayout() {
   const [searchText, setSearchText] = useState('')
   const { searchTransaction } = useDataStore()
   const [debouncedValue] = useDebounceValue(searchText, 700)
+  const pathName = usePathname()
+  const { width } = Dimensions.get('screen')
 
   useEffect(() => {
     searchTransaction(debouncedValue)
@@ -22,17 +25,24 @@ export default function RootHistoryLayout() {
     {
       name: 'all',
       title: 'All',
-      component: 'all',
+      component: '/(tabs)/history/all' as Href,
+      isFocused:
+        pathName === '/history/all' || pathName === '/tabs)/history/all',
     },
     {
       name: 'sent',
       title: 'Sent',
-      component: 'sent',
+      component: '/(tabs)/history/sent' as Href,
+      isFocused:
+        pathName === '/history/sent' || pathName === '/tabs)/history/sent',
     },
     {
       name: 'received',
       title: 'Received',
-      component: 'received',
+      component: '/(tabs)/history/received' as Href,
+      isFocused:
+        pathName === '/history/received' ||
+        pathName === '/tabs)/history/received',
     },
   ]
 
@@ -53,56 +63,51 @@ export default function RootHistoryLayout() {
           />
         </Input>
       </View>
-      <Tabs
-        screenOptions={{
-          headerShown: false,
-          tabBarPosition: 'top',
-        }}
-      >
-        {tabs.map((tab) => (
-          <Tabs.Screen
-            key={tab.name}
-            name={tab.name}
-            options={{
-              title: tab.title,
-              tabBarIconStyle: { display: 'none' },
-              tabBarBackground: () => <View className="bg-white" />,
-              headerShown: false,
-              animation: 'shift',
-              tabBarStyle: {
-                marginTop: 0,
-                paddingTop: 0,
-                top: 0,
-                padding: 6,
-                maxHeight: 50,
-                borderRadius: 100,
-                backgroundColor: 'white',
-                height: Platform.OS === 'ios' ? 80 : 75,
-              },
-              tabBarLabel: ({ focused }) => {
-                return (
-                  <View
-                    className={cn(
-                      'h-full rounded-full w-full flex justify-center items-center',
-                      focused ? 'bg-button ' : 'bg-white',
-                    )}
-                  >
-                    <Text
-                      className={cn(
-                        focused
-                          ? 'text-white font-semibold'
-                          : 'text-[#6D6D6D] font-medium',
-                        'text-base',
-                      )}
-                    >
-                      {tab.title}
-                    </Text>
-                  </View>
-                )
-              },
+      <Tabs>
+        <TabList className="w-full relative bg-white py-1 px-2 rounded-full flex flex-row items-center mb-2">
+          <View
+            from={{ left: 4 }}
+            animate={{
+              left:
+                pathName === '/history/all'
+                  ? 4
+                  : pathName === '/history/sent'
+                  ? width / 3
+                  : (width / 3) * 2 - 7,
             }}
+            transition={{
+              type: 'spring',
+              duration: 400,
+            }}
+            style={{
+              width: width / 3 - 8 - 10,
+            }}
+            className="absolute z-0 h-full rounded-full bg-button"
           />
-        ))}
+          {tabs.map((tab) => (
+            <TabTrigger
+              key={tab.name}
+              name={tab.name}
+              href={tab.component}
+              style={{
+                width: width / 3 - 8 - 10,
+              }}
+              className={cn('h-full rounded-full py-2.5')}
+            >
+              <Text
+                className={cn(
+                  tab.isFocused
+                    ? 'text-white font-semibold'
+                    : 'text-[#6D6D6D] font-medium',
+                  'text-base w-full text-center mx-auto',
+                )}
+              >
+                {tab.title}
+              </Text>
+            </TabTrigger>
+          ))}
+        </TabList>
+        <TabSlot />
       </Tabs>
     </View>
   )
