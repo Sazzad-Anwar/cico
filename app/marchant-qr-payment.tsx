@@ -1,27 +1,22 @@
-import { Image, Text, View } from "moti";
-import Header from "@/components/header";
-import { useLocalSearchParams, useRouter } from "expo-router";
-import { Pressable } from "react-native";
-import { cn } from "@/lib/utils";
-import { useState } from "react";
-import { Input, InputField } from "@/components/ui/input";
-import useAuthStore, { User } from "@/store/auth.store";
 import Button from "@/components/custom-button";
+import Header from "@/components/header";
+import { Input, InputField } from "@/components/ui/input";
 import { useSnackbarContext } from "@/components/ui/snackbar";
-import Loader from "@/components/loader";
+import { cn } from "@/lib/utils";
+import useAuthStore, { User } from "@/store/auth.store";
+import { useRouter } from "expo-router";
+import { Image, Text, View } from "moti";
+import { useState } from "react";
+import { Pressable } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 
-export default function InstitutePaymentScreen() {
+export default function MarchantQrPaymentScreen() {
   const snackbar = useSnackbarContext();
   const { user, updateUser, isLoading } = useAuthStore();
   const { bottom } = useSafeAreaInsets();
   const router = useRouter();
   const [amount, setAmount] = useState(0);
   const [selectedTab, setSelectedTab] = useState("USD");
-  const { institute, type } = useLocalSearchParams<{
-    institute: string;
-    type: string;
-  }>();
 
   const handleConfirm = () => {
     updateUser({
@@ -41,18 +36,14 @@ export default function InstitutePaymentScreen() {
       snackbar.success("Bill Payment Successfull", {
         position: "bottom",
       });
-      router.back();
+      router.push("/(tabs)/home");
     }
   };
 
-  if (isLoading) {
-    return <Loader isFullScreen loaderText="Loading ..." />;
-  }
-
   return (
     <>
-      <View className="px-5">
-        <Header title="Pay Bill" />
+      <View className="px-4">
+        <Header title="Merchant QR payment" />
         <View className="mt-5">
           <Text className="text-lg font-semibold">Receiver</Text>
           <View className="flex flex-row items-center gap-2 mt-2">
@@ -62,9 +53,9 @@ export default function InstitutePaymentScreen() {
             />
             <View>
               <Text className="font-dmSans text-base font-semibold">
-                {institute}
+                Prince Bazar
               </Text>
-              <Text className="text-sm text-[#5D5D5D]">{type}</Text>
+              <Text className="text-sm text-[#5D5D5D]">Super Shop</Text>
             </View>
           </View>
         </View>

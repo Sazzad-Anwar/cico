@@ -1,61 +1,60 @@
-import { GluestackUIProvider } from '@/components/ui/gluestack-ui-provider'
-import '@/global.css'
-import FontAwesome from '@expo/vector-icons/FontAwesome'
+import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
+import "@/global.css";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 import {
   DarkTheme,
   DefaultTheme,
   ThemeProvider,
-} from '@react-navigation/native'
-import { useFonts } from 'expo-font'
-import * as SplashScreen from 'expo-splash-screen'
-import { useEffect, useState } from 'react'
-import { Stack } from 'expo-router'
-import { KeyboardProvider } from 'react-native-keyboard-controller'
-import useAuthStore from '../store/auth.store'
-import { useAuthInitialization } from '../store/useAuthInitialization'
-import { GestureHandlerRootView } from 'react-native-gesture-handler'
-import { SafeAreaProvider } from 'react-native-safe-area-context'
-import useDataStore from '../store/data.store'
-import { SnackbarProvider } from '../components/ui/snackbar'
-import Loader from '../components/loader'
+} from "@react-navigation/native";
+import { useFonts } from "expo-font";
+import * as SplashScreen from "expo-splash-screen";
+import { useEffect, useState } from "react";
+import { Stack } from "expo-router";
+import { KeyboardProvider } from "react-native-keyboard-controller";
+import useAuthStore from "../store/auth.store";
+import { useAuthInitialization } from "../store/useAuthInitialization";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import { SafeAreaProvider } from "react-native-safe-area-context";
+import useDataStore from "../store/data.store";
+import { SnackbarProvider } from "../components/ui/snackbar";
 
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
-} from 'expo-router'
+} from "expo-router";
 
-SplashScreen.preventAutoHideAsync()
+SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [loaded, error] = useFonts({
-    Anton: require('../assets/fonts/Anton-Regular.ttf'),
+    Anton: require("../assets/fonts/Anton-Regular.ttf"),
     ...FontAwesome.font,
-  })
+  });
 
   // Expo Router uses Error Boundaries to catch errors in the navigation tree.
   useEffect(() => {
-    if (error) throw error
-  }, [error])
+    if (error) throw error;
+  }, [error]);
 
   useEffect(() => {
     if (loaded) {
-      SplashScreen.hideAsync()
+      SplashScreen.hideAsync();
     }
-  }, [loaded])
-  return <RootLayoutNav />
+  }, [loaded]);
+  return <RootLayoutNav />;
 }
 
 function RootLayoutNav() {
-  const [colorMode, setColorMode] = useState<'light' | 'dark'>('light')
-  const { isAuthenticated, isLoading } = useAuthStore()
-  const { loadData } = useDataStore()
+  const [colorMode, setColorMode] = useState<"light" | "dark">("light");
+  const { isAuthenticated, isLoading } = useAuthStore();
+  const { loadData } = useDataStore();
 
   // Initialize authentication state on app start
-  useAuthInitialization()
+  useAuthInitialization();
 
   useEffect(() => {
-    loadData()
-  }, [])
+    loadData();
+  }, []);
 
   return (
     <SafeAreaProvider>
@@ -63,12 +62,12 @@ function RootLayoutNav() {
         <GluestackUIProvider mode={colorMode}>
           <SnackbarProvider>
             <ThemeProvider
-              value={colorMode === 'dark' ? DarkTheme : DefaultTheme}
+              value={colorMode === "dark" ? DarkTheme : DefaultTheme}
             >
               <KeyboardProvider>
                 <Stack
                   screenOptions={{
-                    animation: 'slide_from_right',
+                    animation: "slide_from_right",
                   }}
                 >
                   <Stack.Protected guard={!isAuthenticated}>
@@ -111,7 +110,7 @@ function RootLayoutNav() {
                       name="add-user"
                       options={{
                         headerShown: false,
-                        presentation: 'containedModal',
+                        presentation: "containedModal",
                       }}
                     />
                     <Stack.Screen
@@ -128,6 +127,12 @@ function RootLayoutNav() {
                     />
                     <Stack.Screen
                       name="bill-pay"
+                      options={{
+                        headerShown: false,
+                      }}
+                    />
+                    <Stack.Screen
+                      name="marchant-qr-payment"
                       options={{
                         headerShown: false,
                       }}
@@ -152,5 +157,5 @@ function RootLayoutNav() {
         </GluestackUIProvider>
       </GestureHandlerRootView>
     </SafeAreaProvider>
-  )
+  );
 }
