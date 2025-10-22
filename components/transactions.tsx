@@ -1,17 +1,17 @@
-import { Link } from 'expo-router'
-import { Image, ScrollView, Text, View } from 'moti'
-import useDataStore from '../store/data.store'
-import dayjs from 'dayjs'
-import { LinearTransition } from 'react-native-reanimated'
+import { Link } from "expo-router";
+import { Image, ScrollView, Text, View } from "moti";
+import useDataStore from "../store/data.store";
+import dayjs from "dayjs";
+import { LinearTransition } from "react-native-reanimated";
 
 export default function Transactions({
-  title = 'Transactions',
-  className = 'mt-4 px-3',
+  title = "Transactions",
+  className = "mt-4 px-3",
 }: {
-  title?: string
-  className?: string
+  title?: string;
+  className?: string;
 }) {
-  const { transfers } = useDataStore()
+  const { transfers } = useDataStore();
 
   return (
     <View className={className}>
@@ -25,9 +25,9 @@ export default function Transactions({
         </Link>
       </View>
 
-      <ScrollView className="h-80 rounded-xl bg-white mt-3">
+      <View className="h-auto rounded-xl bg-white mt-3">
         <View className="mt-3 gap-3  p-3">
-          {transfers.slice(0, 10).map((transfer, index) => (
+          {transfers.slice(0, 5).map((transfer, index) => (
             <View
               layout={LinearTransition.springify().damping(40).stiffness(400)}
               from={{
@@ -41,7 +41,7 @@ export default function Transactions({
                 scale: 1,
               }}
               transition={{
-                type: index !== 0 ? 'timing' : 'spring',
+                type: index !== 0 ? "timing" : "spring",
                 duration: 600,
                 delay: index * 100,
               }}
@@ -50,7 +50,7 @@ export default function Transactions({
                 opacity: 0,
                 scale: 0.8,
               }}
-              key={transfer.user.name + '_' + index}
+              key={transfer.user.name + "_" + index}
               className="flex flex-row items-center justify-between"
             >
               <View className="flex flex-row items-center gap-2">
@@ -63,7 +63,7 @@ export default function Transactions({
                     {transfer.user.name}
                   </Text>
                   <Text className="text-sm text-[#5D5D5D]">
-                    {dayjs(transfer.date).format('DD MMM YYYY')}
+                    {dayjs(transfer.date).format("DD MMM YYYY")}
                   </Text>
                 </View>
               </View>
@@ -72,13 +72,13 @@ export default function Transactions({
                   ${transfer.amount}
                 </Text>
                 <Text className="text-right font-dmSans text-sm text-[#5D5D5D]">
-                  {dayjs(transfer.date).format('hh:mm a')}
+                  {dayjs(transfer.date).format("hh:mm a")}
                 </Text>
               </View>
             </View>
           ))}
         </View>
-      </ScrollView>
+      </View>
     </View>
-  )
+  );
 }
